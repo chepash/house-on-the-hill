@@ -81,7 +81,8 @@ A short cheat sheet of game terms: what they mean and how to read them in the ha
 ## Tokens
 
 - In Tokens Needed, "2 Sanity Tokens – Exorcism Circle" means **take Sanity tokens from the box**, and **in this haunt they represent** the Exorcism Circle. The picture shows the token to take.
-- ![[small-monster.png|18]] **Small Monster tokens** represent whatever the haunt says. **Large Monster tokens** are named (Werewolf, Vampire and so on).
+- ![[small-monster.png|18]] **Small Monster tokens** represent whatever the haunt says.
+- ![[werewolf.png|18]] **Large Monster tokens** are named (Werewolf, Vampire and so on).
 - ![[number-1.png|18]] **Number tokens** (1–9) and the **Number Track** are different things. The Number Track is a board with a pointer, used for counting.
 - Double-sided tokens (Food/Trap, Videotape/Portal and so on) are one token each; the haunt tells you which side to use.
 

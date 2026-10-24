@@ -2,6 +2,25 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Haunt 16 clarification, Large Monster tokens in the glossary
+
+### Done
+
+- Terms page (both languages, in the vault): Large Monster tokens are now their own bullet
+  with the Werewolf token icon, instead of a second sentence in the Small Monster bullet.
+- Secrets of Survival 16 (both languages, in the vault): a clarification after the Remains
+  rules: Remains are not Items or Omens but may be looted instead of one; one loot takes all
+  the Remains the corpse carried and is the looter's one loot from that corpse this turn.
+
+### Decisions
+
+- The printed sentence "If any loot Remains from an explorer's corpse..." is ungrammatical
+  and does not say how it fits the rulebook limit (one Item or Omen per corpse per turn).
+  The ruling follows the wording other haunts use for lootable tokens ("instead of an item
+  or omen", "only one thing per corpse per turn"). Other haunts are not named on the page.
+- Left open: whether the traitor may loot Remains (the rulebook lets any explorer loot;
+  the Traitor's Tome does not mention Remains looting).
+
 ## 2026-10-24: Haunt 50 clarification (Landing tiles)
 
 ### Done
