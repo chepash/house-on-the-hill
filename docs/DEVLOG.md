@@ -2,6 +2,24 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Erratum footnotes removed
+
+### Done
+
+- Removed the ✎ marks and their footnotes (43 footnotes, 48 references in 35 notes) from
+  the Russian haunt notes in the vault, plus the "✎" bullet on the terms page and the
+  sentence about it in both vault index notes and `make_indexes.py`. Synced; the built
+  site has no footnotes left. Footnote styles removed.
+
+### Decisions
+
+- **The fixes stay, the notes about them go.** Players do not know what "printed V1.1" is,
+  and a footnote saying "fixed" does not help at the table. The corrected text itself
+  (missing lines, tokens, "up to N tiles", etc.) is unchanged.
+- Line endings of the vault files were preserved (some notes use CRLF).
+- The few footnotes that interpreted an ambiguous original were reported to the owner
+  for review instead of being turned into site-only content.
+
 ## 2026-10-24: English hints for Russian game terms
 
 ### Done
