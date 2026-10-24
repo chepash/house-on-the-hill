@@ -20,6 +20,10 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   have no traitor or a hidden one. With uniform rows the list gives nothing away.
 - **Pointer pages link to the haunt, not to the list.** For 2–8 and 9–12 every player reads
   the other book, so a direct link is the expected flow, not a spoiler.
+- **No range hints anywhere.** The home page no longer says which haunt numbers go to
+  which book, and pointer pages show a neutral sentence instead of the book's pointer
+  note (which names the whole group: "haunts 2–8 have no traitor..."). The only "2–8" /
+  "9–12" left in the built site is a dice-roll table in Secrets of Survival 4.
 
 ### Next
 

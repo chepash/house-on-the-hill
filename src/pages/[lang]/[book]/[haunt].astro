@@ -31,9 +31,17 @@ const { Content } = await render(note);
   <h1><span class="haunt-number">{number}</span> {info.title}</h1>
   {info.titleEn && <p class="subtitle" lang="en">{info.titleEn}</p>}
 
-  <article class="prose">
-    <Content />
-  </article>
+  {
+    elsewhere ? (
+      // Not the book's pointer note: it names the whole group of haunts ("2–8 have no
+      // traitor..."), which is a hint for anyone who opens one of them.
+      <p class="prose">{t(lang, 'haunt.elsewhere')}</p>
+    ) : (
+      <article class="prose">
+        <Content />
+      </article>
+    )
+  }
 
   {
     elsewhere && (

@@ -19,8 +19,8 @@ export type BookItem = {
   info: Haunt['data'];
   /**
    * Set when the haunt is printed only in the other book (2–8 in the Traitor's Tome,
-   * 9–12 in Secrets of Survival). The page then shows the book's pointer note.
-   * These haunts still get their own row, so the list does not reveal the group.
+   * 9–12 in Secrets of Survival). The page then shows a neutral pointer to the other
+   * book. These haunts still get their own row, so the list does not reveal the group.
    */
   elsewhere?: Book;
 };

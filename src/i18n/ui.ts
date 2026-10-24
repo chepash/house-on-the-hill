@@ -20,16 +20,16 @@ const en = {
 
   'home.side.title': 'Which side are you on?',
   'home.side.body':
-    'When the haunt begins, find its number on the Scenario card, open your book below and pick the haunt. Switch between EN and RU at any moment: you stay at the same place.',
+    'When the haunt begins, find its number on the Scenario card, open your book below and pick the haunt. If the haunt is read from the other book, its page will tell you. Switch between EN and RU at any moment: you stay at the same place.',
   'home.terms.body': 'Game terms, icons and how to read {3/4/5/6}. No spoilers.',
 
   'book.secrets-of-survival.title': 'Secrets of Survival',
   'book.secrets-of-survival.side': 'Heroes',
-  'book.secrets-of-survival.body': 'For the heroes. Also for haunts 2–8, which have no traitor or a hidden one.',
+  'book.secrets-of-survival.body': 'For the heroes.',
   'book.secrets-of-survival.warning': 'Heroes’ book. The traitor must not read it.',
   'book.traitors-tome.title': 'Traitor’s Tome',
   'book.traitors-tome.side': 'Traitor',
-  'book.traitors-tome.body': 'For the traitor. Also for the free-for-all haunts 9–12, read by everyone.',
+  'book.traitors-tome.body': 'For the traitor.',
   'book.traitors-tome.warning': 'Traitor’s book. Heroes must not read it.',
 
   'terms.title': 'Terms and Clarifications',
@@ -39,6 +39,7 @@ const en = {
   'list.jump.notFound': 'There is no haunt with this number in this book.',
 
   'haunt.back': 'All haunts',
+  'haunt.elsewhere': 'This haunt is printed in the other book. Everyone reads it there.',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -51,16 +52,16 @@ const ru: Record<UiKey, string> = {
 
   'home.side.title': 'На чьей вы стороне?',
   'home.side.body':
-    'Когда начнётся сценарий, найдите его номер на карточке сценария, откройте свою книгу и выберите сценарий. Переключать EN и RU можно в любой момент: вы останетесь на том же месте.',
+    'Когда начнётся сценарий, найдите его номер на карточке сценария, откройте свою книгу и выберите сценарий. Если сценарий читают по другой книге, на его странице это будет сказано. Переключать EN и RU можно в любой момент: вы останетесь на том же месте.',
   'home.terms.body': 'Термины игры, иконки и как читать {3/4/5/6}. Без спойлеров.',
 
   'book.secrets-of-survival.title': 'Книга выживших',
   'book.secrets-of-survival.side': 'Герои',
-  'book.secrets-of-survival.body': 'Для героев. А также для сценариев 2–8, где предателя нет или он скрыт.',
+  'book.secrets-of-survival.body': 'Для героев.',
   'book.secrets-of-survival.warning': 'Книга героев. Предателю её читать нельзя.',
   'book.traitors-tome.title': 'Книга предателя',
   'book.traitors-tome.side': 'Предатель',
-  'book.traitors-tome.body': 'Для предателя. А также для сценариев 9–12 «каждый сам за себя», их читают все.',
+  'book.traitors-tome.body': 'Для предателя.',
   'book.traitors-tome.warning': 'Книга предателя. Героям её читать нельзя.',
 
   'terms.title': 'Термины и пояснения',
@@ -70,6 +71,7 @@ const ru: Record<UiKey, string> = {
   'list.jump.notFound': 'В этой книге нет сценария с таким номером.',
 
   'haunt.back': 'Все сценарии',
+  'haunt.elsewhere': 'Этот сценарий напечатан в другой книге. Все читают его там.',
 };
 
 const strings: Record<Lang, Record<UiKey, string>> = { en, ru };
