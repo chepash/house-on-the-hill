@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const books = ['rules', 'traitors-tome', 'secrets-of-survival'] as const;
+---
+
+<Base lang={lang}>
+  <h1>{t(lang, 'site.title')}</h1>
+  <p class="subtitle">{t(lang, 'site.subtitle')}</p>
+
+  <h2 id="about">{t(lang, 'about.title')}</h2>
+  <p>{t(lang, 'about.body.1')}</p>
+  <p>{t(lang, 'about.body.2')}</p>
+
+  <h2 id="books">{t(lang, 'books.title')}</h2>
+  <ul class="book-list">
+    {
+      books.map((book) => (
+        <li class="book-card">
+          <h3 id={book}>{t(lang, `book.${book}.title`)}</h3>
+          <p>{t(lang, `book.${book}.body`)}</p>
+          <span class="book-card__status">{t(lang, 'status.soon')}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 id="language-switch">{t(lang, 'switch.title')}</h2>
+  <p>{t(lang, 'switch.body.1')}</p>
+  <p>{t(lang, 'switch.body.2')}</p>
+</Base>

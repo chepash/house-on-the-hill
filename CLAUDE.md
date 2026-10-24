@@ -9,3 +9,5 @@
   Never hard-code root-relative URLs.
 - Every content page must exist in both `en/` and `ru/` with the same file name
   and the same heading ids.
+- Before finishing a change, run `npm run check` and `npm run build`.
+- Astro-specific notes (dev server, docs links) are in `AGENTS.md`.

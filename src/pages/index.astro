@@ -1,0 +1,39 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLang, langs, languages } from '../i18n/ui';
+import { LANG_STORAGE_KEY } from '../scripts/reading-position';
+
+const urls = Object.fromEntries(langs.map((lang) => [lang, getRelativeLocaleUrl(lang)]));
+---
+
+<html lang={defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>House on the Hill</title>
+    <script is:inline define:vars={{ urls, defaultLang, storageKey: LANG_STORAGE_KEY }}>
+      // Saved choice first, then the browser language, then the default.
+      let lang = null;
+      try {
+        lang = localStorage.getItem(storageKey);
+      } catch {}
+      if (!(lang in urls)) {
+        const preferred = navigator.languages || [navigator.language];
+        lang = preferred.some((l) => l.toLowerCase().startsWith('ru')) ? 'ru' : defaultLang;
+      }
+      location.replace(urls[lang]);
+    </script>
+  </head>
+  <body>
+    <ul>
+      {
+        langs.map((lang) => (
+          <li>
+            <a href={urls[lang]} hreflang={lang} lang={lang}>{languages[lang]}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>

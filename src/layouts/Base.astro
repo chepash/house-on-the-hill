@@ -1,0 +1,48 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import LanguageSwitch from '../components/LanguageSwitch';
+import { localizedUrls, withBase } from '../i18n/paths';
+import { t, type Lang } from '../i18n/ui';
+import '../styles/global.css';
+
+type Props = {
+  lang: Lang;
+  title?: string;
+};
+
+const { lang, title } = Astro.props;
+const siteTitle = t(lang, 'site.title');
+const urls = localizedUrls(Astro.url.pathname);
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t(lang, 'site.description')} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <link rel="icon" href={withBase('favicon.ico')} />
+    {Object.entries(urls).map(([l, url]) => <link rel="alternate" hreflang={l} href={url} />)}
+    <title>{title ? `${title} · ${siteTitle}` : siteTitle}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-header__title" href={urls[lang]}>{siteTitle}</a>
+      <LanguageSwitch client:load current={lang} urls={urls} label={t(lang, 'lang.label')} />
+    </header>
+    <main class="page">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  import { rememberLang, restoreReadingAnchor } from '../scripts/reading-position';
+
+  // The router has already scrolled the new page when after-swap fires,
+  // so the saved position is applied before the new page is painted.
+  document.addEventListener('astro:after-swap', restoreReadingAnchor);
+  document.addEventListener('astro:page-load', () => rememberLang(document.documentElement.lang));
+</script>

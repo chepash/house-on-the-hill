@@ -1,0 +1,144 @@
+:root {
+  --bg: #f6f1e7;
+  --surface: #fffaf0;
+  --text: #2b2420;
+  --muted: #6e625a;
+  --accent: #7a1f2b;
+  --border: #ddd2c2;
+  --header-height: 3.5rem;
+
+  --font-body: Georgia, 'Times New Roman', serif;
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16131a;
+    --surface: #1f1b24;
+    --text: #e8e1d6;
+    --muted: #a59a8e;
+    --accent: #d9727f;
+    --border: #3a3340;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Keep anchored headings clear of the sticky header. */
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: var(--header-height);
+  padding: 0 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+
+.site-header__title {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.lang-switch__item {
+  padding: 0.25rem 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.lang-switch__item[aria-current] {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem;
+}
+
+.page h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.page h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-ui);
+}
+
+.book-list {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.book-card {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.book-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+}
+
+.book-card p {
+  margin: 0;
+}
+
+.book-card__status {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+}
