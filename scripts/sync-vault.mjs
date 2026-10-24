@@ -1,4 +1,4 @@
-// Copies the haunt notes, the terms page and the icons from the Obsidian vault
+// Copies the haunt notes, the terms page, the rulebook chapters and the icons from the Obsidian vault
 // into the repository, normalizing frontmatter to one schema for both languages.
 //
 // Usage: npm run sync [-- <vault dir>]   (or set VAULT_DIR)
@@ -6,7 +6,7 @@
 // The output is committed: the site never reads from the vault directly.
 
 import { copyFile, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { join, posix, resolve } from 'node:path';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 
 const DEFAULT_VAULT = 'D:/Dropbox/obsidian_vaults/Betrayal_at_House_on_the_Hill';
@@ -22,7 +22,27 @@ const BOOKS = [
   { book: 'secrets-of-survival', dirs: { en: 'English/Secrets of Survival', ru: 'Русский/Книга выживших' } },
 ];
 
-const PAGES = [{ id: 'terms', files: { en: 'English/Terms and Clarifications.md', ru: 'Русский/Термины и пояснения.md' } }];
+const RULEBOOK_CHAPTERS = [
+  { en: '1 Preliminaries', ru: '1 Введение' },
+  { en: '2 Components and Setup', ru: '2 Компоненты и подготовка' },
+  { en: '3 Before the Haunt', ru: '3 До начала сценария' },
+  { en: '4 After the Haunt Begins', ru: '4 После начала сценария' },
+  { en: '5 Characters', ru: '5 Персонажи' },
+];
+
+const RULEBOOK_DIRS = { en: 'English/Rulebook', ru: 'Русский/Правила' };
+
+// `from` is where the page is served below the language root; rulebook links are made relative to it.
+const PAGES = [
+  { id: 'terms', from: 'terms/', files: { en: 'English/Terms and Clarifications.md', ru: 'Русский/Термины и пояснения.md' } },
+  // Rulebook chapters become pages `rules-1` … `rules-5`; the index is shown on the contents page.
+  ...RULEBOOK_CHAPTERS.map((names, i) => ({
+    id: `rules-${i + 1}`,
+    from: `rules/${i + 1}/`,
+    files: { en: `${RULEBOOK_DIRS.en}/${names.en}.md`, ru: `${RULEBOOK_DIRS.ru}/${names.ru}.md` },
+  })),
+  { id: 'rules-index', from: 'rules/', files: { en: `${RULEBOOK_DIRS.en}/Index.md`, ru: `${RULEBOOK_DIRS.ru}/Указатель.md` } },
+];
 
 const ICON_DIRS = ['_Справочник/иконки', '_Справочник/жетоны'];
 
@@ -45,15 +65,25 @@ function splitNote(text) {
   return { data: parseYaml(match[1]) ?? {}, body: text.slice(match[0].length) };
 }
 
-/** Removes the H1, the Obsidian footer and any line with a vault link; returns the H1 text. */
-function cleanBody(body, file) {
+/** Removes the H1 and the Obsidian footer; returns the H1 text and the body without the footer. */
+function stripNote(body) {
   let h1 = null;
   const lines = body.replace(/\r\n/g, '\n').split('\n');
   const h1Index = lines.findIndex((line) => line.startsWith('# '));
   if (h1Index !== -1) h1 = lines.splice(h1Index, 1)[0].slice(2).trim();
 
   // Footer: a `---` rule followed by navigation links at the very end.
-  let text = lines.join('\n').replace(/\n---[ \t]*\n+\[\[[^\n]*\]\][^\n]*\s*$/, '\n');
+  return { h1, text: lines.join('\n').replace(/\n---[ \t]*\n+\[\[[^\n]*\]\][^\n]*\s*$/, '\n') };
+}
+
+/**
+ * Removes the H1, the Obsidian footer and any line with a vault link; returns the H1 text.
+ * `from` is the page's path below the language root (e.g. `rules/`): links to rulebook
+ * chapters are turned into site links relative to it instead of being dropped.
+ */
+function cleanBody(body, file, from) {
+  const { h1, text: stripped } = stripNote(body);
+  let text = from === undefined ? stripped : resolveRulebookLinks(stripped, from, file);
 
   // Other vault links (e.g. "Русская версия: [[...]]") make no sense on the site.
   text = text
@@ -66,6 +96,45 @@ function cleanBody(body, file) {
     .join('\n');
 
   return { h1, body: text.replace(/^\n+/, '').replace(/\s*$/, '\n') };
+}
+
+/**
+ * Anchors of every rulebook chapter, keyed by vault path without `.md`
+ * (`English/Rulebook/4 After the Haunt Begins`): chapter number and heading text -> `bN`.
+ * The numbering is the one remark-obsidian gives headings and callouts on the page.
+ */
+const rulebookAnchors = new Map();
+
+async function loadRulebookAnchors() {
+  for (const [i, names] of RULEBOOK_CHAPTERS.entries()) {
+    for (const [lang, name] of Object.entries(names)) {
+      const path = `${RULEBOOK_DIRS[lang]}/${name}`;
+      const { text } = stripNote(splitNote(await readFile(join(vault, `${path}.md`), 'utf8')).body);
+      const headings = new Map();
+      let anchor = 0;
+      for (const m of text.matchAll(/^(#{2,6}) (.*)$|^(?:> ?)*> \[![a-z-]+\]/gm)) {
+        anchor += 1;
+        if (m[1]) headings.set(m[2].trim(), `b${anchor}`);
+      }
+      rulebookAnchors.set(path, { chapter: i + 1, headings });
+    }
+  }
+}
+
+/** `[[English/Rulebook/4 …#Attacking|Attacking]]` -> `[Attacking](../4/#b5)`, relative to `from`. */
+function resolveRulebookLinks(text, from, file) {
+  return text.replace(/(?<!!)\[\[([^\]|#]+)(?:#([^\]|]+))?(?:\|([^\]]+))?\]\]/g, (link, path, heading, label) => {
+    const target = rulebookAnchors.get(path.trim());
+    if (!target) return link; // not a rulebook link: dropped later with a warning
+    const page = posix.relative(from, `rules/${target.chapter}/`) || '.';
+    let hash = '';
+    if (heading) {
+      const id = target.headings.get(heading.trim());
+      if (id) hash = `#${id}`;
+      else warn(`${file}: no heading "${heading}" in ${path}`);
+    }
+    return `[${label ?? heading ?? path}](${page}/${hash})`;
+  });
 }
 
 /** "18 · A Nice Ring to It — Traitor" -> "A Nice Ring to It" */
@@ -145,11 +214,12 @@ function checkPairs(name, structures) {
 }
 
 async function syncPages() {
-  for (const { id, files } of PAGES) {
+  await loadRulebookAnchors();
+  for (const { id, from, files } of PAGES) {
     const structures = { en: new Map(), ru: new Map() };
     for (const [lang, file] of Object.entries(files)) {
       const { body: rawBody } = splitNote(await readFile(join(vault, file), 'utf8'));
-      const { h1, body } = cleanBody(rawBody, file);
+      const { h1, body } = cleanBody(rawBody, file, from);
       structures[lang].set(id, structure(body));
       await mkdir(join(PAGES_OUT, lang), { recursive: true });
       await writeNote(join(PAGES_OUT, lang, `${id}.md`), { title: h1 }, body);

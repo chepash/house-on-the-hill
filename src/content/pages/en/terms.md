@@ -5,6 +5,8 @@ title: Terms and Clarifications
 A short cheat sheet of game terms: what they mean and how to read them in the haunt notes. There are no spoilers here, so you can read it at any time. Everything comes from the 3rd edition rulebook. Where something is our own interpretation, it says so.
 
 
+Full rulebook: [Rulebook](../rules/1/)
+
 ## Reading the haunt notes
 
 - **{3/4/5/6}**: the value depends on the player count, in the order 3, 4, 5, 6 players. "Heal {1/1/2/3} Sanity" means 1 with 3 or 4 players, 2 with 5 and 3 with 6. A few times the book prints the same thing in round brackets: (3/4/4/5).

@@ -5,6 +5,7 @@ import LanguageSwitch from '../components/LanguageSwitch';
 import { localizedUrls, withBase } from '../i18n/paths';
 import { t, type Lang } from '../i18n/ui';
 import type { Book } from '../lib/haunts';
+import { UNLOCK_AT } from '../scripts/lock';
 import '../styles/global.css';
 
 type Props = {
@@ -29,9 +30,17 @@ const urls = localizedUrls(Astro.url.pathname);
     <link rel="icon" href={withBase('favicon.ico')} />
     {Object.entries(urls).map(([l, url]) => <link rel="alternate" hreflang={l} href={url} />)}
     <title>{title ? `${title} · ${siteTitle}` : siteTitle}</title>
+    <script is:inline define:vars={{ unlockAt: UNLOCK_AT, home: getRelativeLocaleUrl(lang), isBook: Boolean(book) }}>
+      // Runs before the first paint: book pages leave at once, the home page gets its tape.
+      // The same rules are re-applied after client-side navigation (scripts/lock.ts).
+      if (Date.now() < unlockAt) {
+        if (isBook) location.replace(home);
+        else document.documentElement.classList.add('locked');
+      }
+    </script>
     <ClientRouter />
   </head>
-  <body data-book={book}>
+  <body data-book={book} data-home={getRelativeLocaleUrl(lang)}>
     <header class="site-header">
       <a class="site-header__title" href={getRelativeLocaleUrl(lang)}>{siteTitle}</a>
       <LanguageSwitch client:load current={lang} urls={urls} label={t(lang, 'lang.label')} />
@@ -43,10 +52,16 @@ const urls = localizedUrls(Astro.url.pathname);
 </html>
 
 <script>
+  import { applyLock } from '../scripts/lock';
   import { rememberLang, restoreReadingAnchor } from '../scripts/reading-position';
 
   // The router has already scrolled the new page when after-swap fires,
   // so the saved position is applied before the new page is painted.
   document.addEventListener('astro:after-swap', restoreReadingAnchor);
-  document.addEventListener('astro:page-load', () => rememberLang(document.documentElement.lang));
+  // The swap replaces <html> attributes, so the lock class is re-applied before paint.
+  document.addEventListener('astro:after-swap', applyLock);
+  document.addEventListener('astro:page-load', () => {
+    applyLock();
+    rememberLang(document.documentElement.lang);
+  });
 </script>

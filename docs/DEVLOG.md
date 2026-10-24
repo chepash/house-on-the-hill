@@ -2,6 +2,74 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-25: Crime-scene tape until game night
+
+### Done
+
+- Until 25 October 2026, 16:00 Tbilisi time (`UNLOCK_AT` in `src/scripts/lock.ts`), the two
+  haunt books are "closed": the home page covers the book cards with one yellow "KEEP OUT"
+  tape along the rising diagonal of the cards (the angle is computed from their size, so it
+  fits any screen), a note tag on the tape with a live countdown, and the cards are `inert`.
+  The "Which side are you on?" heading is under the tape too: it belongs to the closed part. Any book list or haunt URL
+  redirects to the home page.
+- An inline script in `Base.astro` applies the lock before the first paint (redirect, or the
+  `locked` class on `<html>`); `applyLock()` re-applies it after every view-transition swap,
+  because the swap replaces the `<html>` attributes.
+- At `UNLOCK_AT` everything opens by itself, also on an open page (the countdown timer
+  removes the lock). No redeploy is needed.
+- Rulebook chapter cards on `/{lang}/rules/` use the same neutral accent as the home
+  reference cards.
+- Home page: a rule (`.home-divider`) sets the rulebook and terms cards apart from the side
+  choice. No heading: "For everyone" and similar titles read oddly.
+
+### Decisions
+
+- A joke, not access control: the pages are built and deployed as usual, and the repository
+  is public. Without JavaScript the site is simply open.
+
+### Next
+
+- After game night, remove the lock (`lock.ts`, the inline script, the `.lock` markup and
+  styles, the `lock.*` UI keys), or move `UNLOCK_AT` for the next session.
+
+## 2026-10-24: Rulebook pages
+
+### Done
+
+- The vault now has the full rulebook in both languages: `English/Rulebook/1–5 …` and
+  `Русский/Правила/1–5 …`, one note per section of the printed book. The sync script
+  copies them as pages `rules-1` … `rules-5` (the same structure check as for the other
+  pages; it passes).
+- New routes `/{lang}/rules/` (contents) and `/{lang}/rules/{n}/` (chapter with
+  previous / contents / next links). Chapter lookup lives in `src/lib/rules.ts`.
+- Home page: a "Rulebook" / «Правила» link above the terms link. New UI keys `rules.*`.
+- Home reference cards (rulebook, terms) are laid out like the book cards (`.choice--reference`):
+  the same size (3.5rem icon, full left border), the title in the plain text color, and a
+  neutral accent (`--muted`): the default red border looked like the traitor's book.
+  Rulebook uses the Omen icon (raven), terms the Item icon.
+
+- The rulebook's alphabetical index (pp. 22–23) is on the contents page `/{lang}/rules/`.
+  The vault has it as `English/Rulebook/Index.md` / `Русский/Правила/Указатель.md`, where
+  every page number became an Obsidian heading link. The sync script now turns links into
+  rulebook chapters into site links with the chapter's positional anchor (`../4/#b5`),
+  relative to where the page is served (`from` in `PAGES`), instead of dropping them.
+  The terms page's "Full rulebook" link works the same way.
+- Rulebook headings carry no icons any more (moved to the first line of the section),
+  so heading links match in Obsidian and on the site.
+
+### Decisions
+
+- Chapter URLs use the plain chapter number (`rules/4/`), so both languages share a path.
+- Index links target the same positional anchors (`bN`) the language switch uses, so they
+  are identical in both languages and are computed by the sync script, not by slugs.
+- All 200 index links (100 per language) were checked against the built pages: the anchor
+  exists and the heading text equals the link text.
+
+### Next
+
+- Optionally cut the rulebook's illustrations (component photo, setup layout, tile
+  placement examples) from the PDF; the notes carry only their captions for now.
+
 ## 2026-10-24: Minimal home page
 
 ### Done

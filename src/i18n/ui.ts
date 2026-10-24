@@ -29,6 +29,14 @@ const en = {
 
   'terms.title': 'Terms and Clarifications',
 
+  'lock.tape': 'KEEP OUT',
+  'lock.note': 'The House on the Hill expects its guests on 25 October at 16:00, Tbilisi time.',
+
+  'rules.title': 'Rulebook',
+  'rules.contents': 'Contents',
+  'rules.prev': 'Previous',
+  'rules.next': 'Next',
+
   'list.jump.label': 'Haunt number',
   'list.jump.submit': 'Open',
   'list.jump.notFound': 'There is no haunt with this number in this book.',
@@ -55,6 +63,14 @@ const ru: Record<UiKey, string> = {
   'book.traitors-tome.warning': 'Книга предателя. Героям её читать нельзя.',
 
   'terms.title': 'Термины и пояснения',
+
+  'lock.tape': 'KEEP OUT',
+  'lock.note': 'Дом на холме ждёт гостей 25 октября в 16:00 по Тбилиси.',
+
+  'rules.title': 'Правила',
+  'rules.contents': 'Оглавление',
+  'rules.prev': 'Назад',
+  'rules.next': 'Далее',
 
   'list.jump.label': 'Номер сценария',
   'list.jump.submit': 'Открыть',

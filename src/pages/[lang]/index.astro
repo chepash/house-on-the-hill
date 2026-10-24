@@ -15,32 +15,62 @@ const bookIcons = {
   'secrets-of-survival': 'icons/event.svg',
   'traitors-tome': 'icons/death.svg',
 } as const;
+
+const tapeText = Array(8).fill(t(lang, 'lock.tape')).join('  ·  ');
+
+// The two reference pages use the other card icons from the books: Omen (raven) and Item.
+const referencePages = [
+  { path: 'rules/', title: 'rules.title', icon: 'icons/omen.svg' },
+  { path: 'terms/', title: 'terms.title', icon: 'icons/item.svg' },
+] as const;
 ---
 
 <Base lang={lang}>
   <h1 class="game-title">{t(lang, 'game.title')}</h1>
 
-  <h2 id="side" data-anchor>{t(lang, 'home.side.title')}</h2>
+  <div class="lock">
+    <h2 id="side" data-anchor>{t(lang, 'home.side.title')}</h2>
+
+    <ul class="choice-list" data-lock-zone>
+      {
+        books.map((book) => (
+          <li>
+            <a class="choice choice--book" data-book={book} href={getRelativeLocaleUrl(lang, `${book}/`)}>
+              <img class="choice__icon" src={withBase(bookIcons[book])} alt="" width="56" height="56" />
+              <span class="choice__text">
+                <span class="choice__title">{t(lang, `book.${book}.title`)}</span>
+                <span class="choice__body">{t(lang, `book.${book}.body`)}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    {/* Crime-scene tape over the books until game night; shown only while html.locked (scripts/lock.ts). */}
+    <div class="lock__overlay">
+      <div class="lock__tape" aria-hidden="true">{tapeText}</div>
+      <p class="lock__note">
+        <span>{t(lang, 'lock.note')}</span>
+        <span class="lock__countdown" data-countdown></span>
+      </p>
+    </div>
+  </div>
+
+  <hr class="home-divider" />
 
   <ul class="choice-list">
     {
-      books.map((book) => (
+      referencePages.map(({ path, title, icon }) => (
         <li>
-          <a class="choice choice--book" data-book={book} href={getRelativeLocaleUrl(lang, `${book}/`)}>
-            <img class="choice__icon" src={withBase(bookIcons[book])} alt="" width="56" height="56" />
+          <a class="choice choice--reference" href={getRelativeLocaleUrl(lang, path)}>
+            <img class="choice__icon" src={withBase(icon)} alt="" width="56" height="56" />
             <span class="choice__text">
-              <span class="choice__title">{t(lang, `book.${book}.title`)}</span>
-              <span class="choice__body">{t(lang, `book.${book}.body`)}</span>
+              <span class="choice__title">{t(lang, title)}</span>
             </span>
           </a>
         </li>
       ))
     }
   </ul>
-
-  <a class="choice choice--minor" href={getRelativeLocaleUrl(lang, 'terms/')}>
-    <span class="choice__text">
-      <span class="choice__title">{t(lang, 'terms.title')}</span>
-    </span>
-  </a>
 </Base>

@@ -1,0 +1,44 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getEntry, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../../i18n/ui';
+import { chapters, getChapter } from '../../../lib/rules';
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const items = await Promise.all(chapters.map(async (n) => ({ n, title: (await getChapter(lang, n)).data.title })));
+
+// The rulebook's alphabetical index, its page numbers replaced by links into the chapters.
+const index = await getEntry('pages', `${lang}/rules-index`);
+if (!index) throw new Error(`Missing pages/${lang}/rules-index.md, run npm run sync`);
+const { Content: IndexContent } = await render(index);
+---
+
+<Base lang={lang} title={t(lang, 'rules.title')}>
+  <h1>{t(lang, 'rules.title')}</h1>
+
+  <ul class="choice-list">
+    {
+      items.map(({ n, title }) => (
+        <li>
+          <a class="choice choice--minor choice--reference" href={getRelativeLocaleUrl(lang, `rules/${n}/`)}>
+            <span class="choice__text">
+              <span class="choice__title">
+                {n} · {title}
+              </span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 id="index">{index.data.title}</h2>
+  <article class="prose">
+    <IndexContent />
+  </article>
+</Base>

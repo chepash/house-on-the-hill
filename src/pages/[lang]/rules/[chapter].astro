@@ -1,0 +1,35 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../../i18n/ui';
+import { chapters, getChapter } from '../../../lib/rules';
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) => chapters.map((n) => ({ params: { lang, chapter: String(n) } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const chapter = Number(Astro.params.chapter);
+const page = await getChapter(lang, chapter);
+const { Content } = await render(page);
+
+const prev = chapter > chapters[0] ? chapter - 1 : undefined;
+const next = chapter < chapters[chapters.length - 1] ? chapter + 1 : undefined;
+---
+
+<Base lang={lang} title={page.data.title}>
+  <p class="eyebrow">
+    <a href={getRelativeLocaleUrl(lang, 'rules/')}>{t(lang, 'rules.title')}</a>
+  </p>
+  <h1>{page.data.title}</h1>
+  <article class="prose">
+    <Content />
+  </article>
+
+  <nav class="page-footer">
+    {prev ? <a href={getRelativeLocaleUrl(lang, `rules/${prev}/`)}>← {t(lang, 'rules.prev')}</a> : <span />}
+    <a href={getRelativeLocaleUrl(lang, 'rules/')}>{t(lang, 'rules.contents')}</a>
+    {next ? <a href={getRelativeLocaleUrl(lang, `rules/${next}/`)}>{t(lang, 'rules.next')} →</a> : <span />}
+  </nav>
+</Base>

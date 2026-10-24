@@ -3,8 +3,9 @@
 A static reader for the haunt books of **Betrayal at House on the Hill, 3rd Edition**
 (Traitor's Tome and Secrets of Survival) in English and Russian, hosted on GitHub Pages.
 
-The rulebook is out of scope: players use the printed one. A short glossary page
-("Terms and Clarifications") is included instead.
+The rulebook is included as five chapter pages (the book's own five sections, without
+the alphabetical index). A short glossary page ("Terms and Clarifications") is kept
+separately as the quick reference.
 
 ## Goals
 
@@ -40,12 +41,14 @@ so Astro is configured with `base: '/house-on-the-hill'`. Internal links go thro
 
 ```
 /                                     -> redirect to /en/ or /ru/ (saved choice, then browser language)
-/{lang}/                              "Which side are you on?": the two books + terms
+/{lang}/                              "Which side are you on?": the two books, rulebook, terms
 /{lang}/secrets-of-survival/          heroes' haunt list, with a haunt number jump
 /{lang}/secrets-of-survival/{nn}/     heroes' side of haunt nn
 /{lang}/traitors-tome/                traitor's haunt list
 /{lang}/traitors-tome/{nn}/           traitor's side of haunt nn
 /{lang}/terms/                        Terms and Clarifications (no spoilers)
+/{lang}/rules/                        rulebook contents and linked index
+/{lang}/rules/{n}/                    rulebook chapter n, 1..5
 ```
 
 `{lang}` is `en` or `ru`. `{nn}` is the two-digit haunt number, `01`..`50`.
@@ -71,6 +74,9 @@ vault                                         repo
 English/Traitor's Tome/18 A Nice Ring….md  -> src/content/haunts/traitors-tome/en/18.md
 Русский/Книга предателя/18 Симпатичное….md -> src/content/haunts/traitors-tome/ru/18.md
 English/Terms and Clarifications.md        -> src/content/pages/en/terms.md
+English/Rulebook/4 After the Haunt….md     -> src/content/pages/en/rules-4.md
+Русский/Правила/4 После начала….md         -> src/content/pages/ru/rules-4.md
+English/Rulebook/Index.md                  -> src/content/pages/en/rules-index.md
 _Справочник/иконки/*, _Справочник/жетоны/*   -> public/icons/
 ```
 
