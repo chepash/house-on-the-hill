@@ -2,6 +2,28 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: English hints for Russian game terms
+
+### Done
+
+- `remark-term-hints`: in the Russian haunt notes, the first mention of a key term on a
+  page gets the English original in parentheses, styled muted and smaller:
+  «инициатор сценария (haunt revealer)», «Герои (heroes)».
+- Terms: hidden traitor, haunt revealer, explorer, hero, traitor, character board,
+  Monster card, trait, critical, line of sight, stunned. English follows the vault glossary.
+- About 2 hints per page (412 over 100 Russian haunt pages).
+
+### Decisions
+
+- **Build time, not in the vault.** The notes stay as they are; the list lives in one
+  file and is easy to extend.
+- **First mention per page only**, the same rule the glossary uses for room and card
+  names. Every mention would clutter the text.
+- **Case forms by regex**, with Cyrillic-aware word boundaries. Plural role nouns get the
+  English plural. Card names that only look like terms («Исследователи паранормального»)
+  are skipped explicitly, and a term already followed by «(» is left alone.
+- Not on the terms page: it already explains every term in both languages.
+
 ## 2026-10-24: One row per haunt in both lists
 
 ### Done

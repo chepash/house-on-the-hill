@@ -90,6 +90,12 @@ Rendering (src/markdown/remark-obsidian.mjs):
 - `> [!type] Title` callouts, nested too -> `<aside class="callout">` with the book's icon;
 - soft line breaks are kept as in Obsidian (remark-breaks).
 
+Russian term hints (src/markdown/remark-term-hints.mjs): in the Russian haunt notes the
+first mention of a key game term on a page gets the original English term in parentheses,
+e.g. «инициатор сценария (haunt revealer)». The term list (Russian patterns with case
+forms -> English from the vault glossary) is in that file. Hints are added at build time;
+the vault notes stay unchanged.
+
 ## Language switching without losing position
 
 1. Every heading and callout gets a positional id (`b1`, `b2`, ...) and `data-anchor`.
@@ -126,5 +132,6 @@ Each phase ends with a deploy and an entry in [DEVLOG.md](DEVLOG.md).
   becomes public.
 - **Content alignment.** The switch relies on identical structure in both languages.
   The sync script warns about drift; keep the warning list empty.
-- **Markdown cache.** Astro caches rendered collection entries. After changing the
-  remark plugin, delete `node_modules/.astro` and `.astro` before building.
+- **Markdown cache.** Astro caches rendered collection entries, on disk and in the running
+  dev server. After changing a remark plugin, delete `node_modules/.astro` and `.astro` and
+  restart the dev server.

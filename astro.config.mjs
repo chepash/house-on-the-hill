@@ -4,6 +4,7 @@ import { unified } from '@astrojs/markdown-remark';
 import react from '@astrojs/react';
 import remarkBreaks from 'remark-breaks';
 import remarkObsidian from './src/markdown/remark-obsidian.mjs';
+import remarkTermHints from './src/markdown/remark-term-hints.mjs';
 
 const base = '/house-on-the-hill';
 
@@ -19,7 +20,7 @@ export default defineConfig({
     processor: unified({
       // Obsidian shows single line breaks as breaks; remark-breaks must run after
       // remark-obsidian, which splits callout titles on the first line break.
-      remarkPlugins: [[remarkObsidian, { base: `${base}/` }], remarkBreaks],
+      remarkPlugins: [[remarkObsidian, { base: `${base}/` }], remarkTermHints, remarkBreaks],
     }),
   },
   i18n: {

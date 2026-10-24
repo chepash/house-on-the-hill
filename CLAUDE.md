@@ -20,5 +20,7 @@
   exception: pointer pages for haunts printed only in the other book (2–8, 9–12).
 - Both lists show every haunt number as its own row; never group rows in a way that
   hints at the kind of haunt.
-- After changing `src/markdown/remark-obsidian.mjs`, delete `node_modules/.astro` and
-  `.astro`: Astro caches rendered collection entries.
+- After changing a remark plugin in `src/markdown/`, delete `node_modules/.astro` and
+  `.astro` and restart the dev server: Astro caches rendered collection entries.
+- English hints for Russian game terms are added at build time by
+  `src/markdown/remark-term-hints.mjs`; extend its `TERMS` list, not the notes.

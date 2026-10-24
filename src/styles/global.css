@@ -346,6 +346,15 @@ a {
   vertical-align: -0.3em;
 }
 
+/* Original English term after the first mention of a game term (Russian notes). */
+.term-en {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.85em;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Callouts: > [!type] Title. Colors follow the vault's betrayal.css snippet. */
 .callout {
   --callout-color: 110, 110, 110;
