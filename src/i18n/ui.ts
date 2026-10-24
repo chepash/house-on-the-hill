@@ -21,11 +21,9 @@ const en = {
   'home.side.title': 'Which side are you on?',
 
   'book.secrets-of-survival.title': 'Secrets of Survival',
-  'book.secrets-of-survival.side': 'Heroes',
   'book.secrets-of-survival.body': 'For the heroes.',
   'book.secrets-of-survival.warning': 'Heroes’ book. The traitor must not read it.',
   'book.traitors-tome.title': 'Traitor’s Tome',
-  'book.traitors-tome.side': 'Traitor',
   'book.traitors-tome.body': 'For the traitor.',
   'book.traitors-tome.warning': 'Traitor’s book. Heroes must not read it.',
 
@@ -50,11 +48,9 @@ const ru: Record<UiKey, string> = {
   'home.side.title': 'На чьей вы стороне?',
 
   'book.secrets-of-survival.title': 'Книга выживших',
-  'book.secrets-of-survival.side': 'Герои',
   'book.secrets-of-survival.body': 'Для героев.',
   'book.secrets-of-survival.warning': 'Книга героев. Предателю её читать нельзя.',
   'book.traitors-tome.title': 'Книга предателя',
-  'book.traitors-tome.side': 'Предатель',
   'book.traitors-tome.body': 'Для предателя.',
   'book.traitors-tome.warning': 'Книга предателя. Героям её читать нельзя.',
 

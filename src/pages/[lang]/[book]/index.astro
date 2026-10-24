@@ -17,8 +17,7 @@ const jumpTargets = Object.fromEntries(items.map((item) => [item.number, url(ite
 ---
 
 <Base lang={lang} book={book} title={t(lang, `book.${book}.title`)}>
-  <p class="eyebrow">{t(lang, `book.${book}.side`)}</p>
-  <h1>{t(lang, `book.${book}.title`)}</h1>
+  <h1 class="book-title">{t(lang, `book.${book}.title`)}</h1>
   <p class="warning">{t(lang, `book.${book}.warning`)}</p>
 
   <HauntJump

@@ -12,7 +12,10 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   terms card. UI keys `site.subtitle`, `home.side.body`, `home.terms.body` replaced or removed.
 - Book cards (`.choice--book`, home page only): no "Heroes" / "Traitor" label, the book title
   in the book's color, the icon enlarged to 3.5rem and centered against the two text lines.
-  The book list pages still show the side label above the title.
+- The Secrets of Survival card uses the Event icon (spiral) instead of the hero portrait:
+  it matches the black skull of the Traitor's Tome.
+- Book list pages: the "Heroes" / "Traitor" label above the title is gone; the title itself
+  is in the book's color. The `book.*.side` UI keys are removed.
 
 ### Decisions
 

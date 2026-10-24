@@ -156,6 +156,11 @@ a {
   font-size: 0.95rem;
 }
 
+/* Book list page: the title in the book's own color. */
+.page h1.book-title {
+  color: var(--accent);
+}
+
 .haunt-number {
   color: var(--accent);
 }
