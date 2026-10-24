@@ -334,6 +334,33 @@ a {
   margin-top: 0.25rem;
 }
 
+/* Tables (terms page). Left-aligned headers line up with the cells below them;
+   padding stays modest so three short columns fit a 360 px screen. */
+.prose table {
+  margin: 1rem 0;
+  border-collapse: collapse;
+}
+
+.prose th,
+.prose td {
+  padding: 0.35rem 1.25rem 0.35rem 0;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose th {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  padding-right: 0;
+}
+
 /* Inline icons: ![[omen.svg|18]] */
 .prose img.icon {
   height: auto;

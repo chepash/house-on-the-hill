@@ -26,6 +26,9 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   only the first mention. Those were added to the vault note itself
   (`Русский/Термины и пояснения.md`, 48 terms, e.g. «**Исследователь** (Explorer)»),
   using the wording of the English terms note, then synced.
+- Tables got styles: left-aligned headers (they were centered by default and did not
+  line up with the cells), wider column gaps, thin row lines. Checked at 360 px: both
+  traits tables fit. The Russian traits table header no longer says "(Trait)".
 
 ## 2026-10-24: One row per haunt in both lists
 
