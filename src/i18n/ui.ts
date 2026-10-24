@@ -14,7 +14,7 @@ export function isLang(value: unknown): value is Lang {
 
 const en = {
   'site.title': 'House on the Hill',
-  'game.title': 'Betrayal at House on the Hill',
+  'game.title': 'Betrayal at House\non the Hill',
   'site.description': 'Traitor’s Tome and Secrets of Survival in English and Russian, ready for the phone.',
   'lang.label': 'Language',
 
@@ -41,7 +41,7 @@ export type UiKey = keyof typeof en;
 
 const ru: Record<UiKey, string> = {
   'site.title': 'Дом на холме',
-  'game.title': 'Предательство в доме на холме',
+  'game.title': 'Предательство\nв доме на холме',
   'site.description': 'Книга предателя и книга выживших на русском и английском, удобно с телефона.',
   'lang.label': 'Язык',
 

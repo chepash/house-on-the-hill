@@ -156,6 +156,11 @@ a {
   font-size: 0.95rem;
 }
 
+/* Home page heading: the UI string holds a fixed line break (\n), kept on every screen width. */
+.game-title {
+  white-space: pre-line;
+}
+
 /* Book list page: the title in the book's own color. */
 .page h1.book-title {
   color: var(--accent);
