@@ -2,6 +2,23 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Haunt 37 clarification
+
+### Done
+
+- Traitor's Tome 37 (both languages, in the vault): a nested "Clarification (not from the
+  book)" callout on the Security Robot: a robot that attacks and loses takes no damage; a
+  robot damaged by a hero's attack or by Mess with Circuits is killed and removed. A
+  footnote links the BoardGameGeek thread where this ruling was discussed.
+- Footnote styles restored, now meant for source notes like this one.
+
+### Decisions
+
+- The original sentence ("do not take any damage from attacking heroes") is ambiguous. The
+  heroes' objective ("Disable the Security Robots by successfully attacking them") rules out
+  the reading that robots are immune to heroes' attacks; the BGG answer agrees.
+- Footnotes are fine for sources of disputed rulings; translation-fix footnotes stay removed.
+
 ## 2026-10-24: Erratum footnotes removed
 
 ### Done
