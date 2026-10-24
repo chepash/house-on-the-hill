@@ -2,6 +2,27 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Haunt 50 clarification (Landing tiles)
+
+### Done
+
+- Haunt 50 (both books, both languages, in the vault): a "Clarification (not from the
+  book)" callout saying that Landing tiles are all three starting tiles, including the
+  whole large ground floor tile (Ground Floor Staircase, Hallway, Entrance Hall), so none
+  of them can be Consumed and the traitor does not need to Consume them to win. In the
+  Traitor's Tome it is nested in the Construct callout after "Consume the House".
+
+### Decisions
+
+- The rulebook defines no "Landing tile"; it names the Basement and Upper Landing and the
+  "triple room tile". Other haunts settle it: one calls the triple tile the "Ground Floor
+  Landing" and treats Landing tiles the same way (not turned face-down), another returns
+  "all tiles except Landing tiles" to the stack, which cannot mean the triple tile.
+  Consuming means turning the tile face-down, and the triple tile cannot be partly flipped.
+- No footnote: the BoardGameGeek threads on haunt 50 do not discuss this (the 3rd edition
+  thread asks whether failed Explosives are lost; the haunt text already says nothing is
+  placed). Other haunts are not named in the callout to avoid spoilers.
+
 ## 2026-10-24: Haunt 37 clarification
 
 ### Done
