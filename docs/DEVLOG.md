@@ -2,6 +2,29 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: One row per haunt in both lists
+
+### Done
+
+- Replaced the range rows ("2–8 No Traitor or Hidden Traitor", "9–12 Free-for-All")
+  with one row and one page per haunt number. Each book now has 50 pages per language.
+- A haunt printed only in the other book shows its real title (taken from the other
+  book), and its page shows the book's pointer note plus a button to the same haunt in
+  the other book.
+- `getBookItems()` in `src/lib/haunts.ts` builds the per-number list; the build fails if a
+  number is in neither book.
+
+### Decisions
+
+- **The grouped rows were a spoiler.** A traitor scanning the list could tell which haunts
+  have no traitor or a hidden one. With uniform rows the list gives nothing away.
+- **Pointer pages link to the haunt, not to the list.** For 2–8 and 9–12 every player reads
+  the other book, so a direct link is the expected flow, not a spoiler.
+
+### Next
+
+- Decide whether the list should show the "trigger · traitor" line at all.
+
 ## 2026-10-24: Phase 1, haunt books
 
 ### Done

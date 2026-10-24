@@ -16,6 +16,9 @@
   vault. Do not edit them by hand: fix the vault note and sync again.
 - The sync must finish without structure warnings: every note exists in `en/` and `ru/`
   with the same sequence of headings and callouts (the language switch depends on it).
-- Never link from one book's haunt to the other book's haunt (spoilers).
+- Never link from one book's haunt to the other book's haunt (spoilers). The only
+  exception: pointer pages for haunts printed only in the other book (2–8, 9–12).
+- Both lists show every haunt number as its own row; never group rows in a way that
+  hints at the kind of haunt.
 - After changing `src/markdown/remark-obsidian.mjs`, delete `node_modules/.astro` and
   `.astro`: Astro caches rendered collection entries.

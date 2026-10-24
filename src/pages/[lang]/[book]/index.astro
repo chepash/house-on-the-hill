@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import HauntJump from '../../../components/HauntJump';
 import Base from '../../../layouts/Base.astro';
 import { langs, t, type Lang } from '../../../i18n/ui';
-import { books, getHaunts, hauntLabel, hauntSlug, type Book } from '../../../lib/haunts';
+import { books, getBookItems, type Book } from '../../../lib/haunts';
 
 export function getStaticPaths() {
   return langs.flatMap((lang) => books.map((book) => ({ params: { lang, book } })));
@@ -11,16 +11,9 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const book = Astro.params.book as Book;
-const haunts = await getHaunts(book, lang);
+const items = await getBookItems(book, lang);
 const url = (slug: string) => getRelativeLocaleUrl(lang, `${book}/${slug}/`);
-
-// Every number a player may type, including each number of a range note.
-const jumpTargets: Record<number, string> = {};
-for (const haunt of haunts) {
-  for (let n = haunt.data.number; n <= (haunt.data.lastNumber ?? haunt.data.number); n++) {
-    jumpTargets[n] = url(hauntSlug(haunt));
-  }
-}
+const jumpTargets = Object.fromEntries(items.map((item) => [item.number, url(item.slug)]));
 ---
 
 <Base lang={lang} book={book} title={t(lang, `book.${book}.title`)}>
@@ -40,15 +33,15 @@ for (const haunt of haunts) {
 
   <ol class="haunt-list">
     {
-      haunts.map((haunt) => (
+      items.map(({ number, slug, info }) => (
         <li>
-          <a class:list={['haunt-row', { 'haunt-row--stub': haunt.data.stub }]} href={url(hauntSlug(haunt))}>
-            <span class="haunt-row__number">{hauntLabel(haunt)}</span>
+          <a class="haunt-row" href={url(slug)}>
+            <span class="haunt-row__number">{number}</span>
             <span class="haunt-row__text">
-              <span class="haunt-row__title">{haunt.data.title}</span>
-              {haunt.data.trigger && (
+              <span class="haunt-row__title">{info.title}</span>
+              {info.trigger && (
                 <span class="haunt-row__meta">
-                  {haunt.data.trigger} · {haunt.data.traitor}
+                  {info.trigger} · {info.traitor}
                 </span>
               )}
             </span>

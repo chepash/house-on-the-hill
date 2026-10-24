@@ -48,11 +48,15 @@ so Astro is configured with `base: '/house-on-the-hill'`. Internal links go thro
 /{lang}/terms/                        Terms and Clarifications (no spoilers)
 ```
 
-`{lang}` is `en` or `ru`. `{nn}` is the two-digit haunt number, or a range for the
-pointer notes: `traitors-tome/02-08` (no traitor / hidden traitor, see Secrets of Survival)
-and `secrets-of-survival/09-12` (free-for-all, see Traitor's Tome).
+`{lang}` is `en` or `ru`. `{nn}` is the two-digit haunt number, `01`..`50`.
 Every page exists in both languages under the same path, so switching language
 only swaps the prefix.
+
+Both lists show all 50 haunts with their real titles, so a list never reveals which
+haunts belong to a special group. Haunts printed only in the other book (2–8 are only
+in Secrets of Survival, 9–12 only in the Traitor's Tome) get a pointer page: the
+book's own note plus a button to the same haunt in the other book, where all players
+read it.
 
 Each book has its own accent color (heroes blue, traitor red) and a spoiler
 warning on its list page.

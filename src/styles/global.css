@@ -307,12 +307,6 @@ a {
   font-weight: 600;
 }
 
-.haunt-row--stub .haunt-row__title {
-  color: var(--muted);
-  font-style: italic;
-  font-weight: 400;
-}
-
 .haunt-row__meta {
   color: var(--muted);
   font-family: var(--font-ui);
