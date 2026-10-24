@@ -22,7 +22,10 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
 - **Case forms by regex**, with Cyrillic-aware word boundaries. Plural role nouns get the
   English plural. Card names that only look like terms («Исследователи паранормального»)
   are skipped explicitly, and a term already followed by «(» is left alone.
-- Not on the terms page: it already explains every term in both languages.
+- Not on the terms page: there every defined term needs its English original, not
+  only the first mention. Those were added to the vault note itself
+  (`Русский/Термины и пояснения.md`, 48 terms, e.g. «**Исследователь** (Explorer)»),
+  using the wording of the English terms note, then synced.
 
 ## 2026-10-24: One row per haunt in both lists
 
