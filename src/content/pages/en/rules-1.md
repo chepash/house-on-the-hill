@@ -35,11 +35,11 @@ At the start of the haunt, the players may no longer be on the same team. Typica
 
 ## Symbols Used
 This rulebook and the haunt books use some distinctive symbols to help you quickly understand the nature of what you're reading. Here are the symbols:
-- ![[event.svg|18]] **Event**, ![[item.svg|18]] **Item**, ![[omen.svg|18]] **Omen** — these symbols identify the three types of cards you can draw during the game. See page 8.
-- ![[starting-tile.svg|18]] **Starting Tile** — see Game Setup, step 8, page 7.
-- ![[special-action.svg|18]] **Special Action** — see Special Actions, page 13.
-- ![[monster.svg|18]] **Monster Information** — see Anatomy of a Haunt, page 16.
-- ![[death.svg|18]] **Death** — see Dying, page 19.
+- ![[event.svg|18]] **Event**, ![[item.svg|18]] **Item**, ![[omen.svg|18]] **Omen** — these symbols identify the three types of cards you can draw during the game. See [Cards](../2/#b4).
+- ![[starting-tile.svg|18]] **Starting Tile** — see [Game Setup](../2/#b2), step 8.
+- ![[special-action.svg|18]] **Special Action** — see [Special Actions](../3/#b16).
+- ![[monster.svg|18]] **Monster Information** — see [Anatomy of a Haunt](../4/#b13).
+- ![[death.svg|18]] **Death** — see [Dying](../4/#b37).
 - ![[important.svg|18]] **Important Changes** — see Important Changes on the next page.
 
 ## If You've Played Before: Important Changes

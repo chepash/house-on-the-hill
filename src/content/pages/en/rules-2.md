@@ -38,7 +38,7 @@ title: Game Components and Setup
 ## Game Setup
 1. Set aside the *Traitor's Tome* and *Secrets of Survival* haunt books. You'll use them after the haunt has started.
 2. Each player chooses a character and takes their matching **character board**, **figure**, and **character figure base** (matched by color). Insert each figure into its base.
-3. Give each player four **clips** to place on their character board. Players should place each clip so that it points to a different green number on their board. These represent their characters' starting traits. For more on traits, see page 9.
+3. Give each player four **clips** to place on their character board. Players should place each clip so that it points to a different green number on their board. These represent their characters' starting traits. For more on traits, see [Character Boards and Figures](./#b13).
 4. Place all of the **dice** within easy reach of all players.
 5. Sort the **Event**, **Item**, and **Omen** cards by type. Shuffle each into a face-down deck, placed within easy reach of all players.
 6. Place the **Monster reference card** and **Traitor reference card** face-up on the table, within sight of all players.
@@ -59,7 +59,7 @@ title: Game Components and Setup
 ## Component Overview
 By now you can almost certainly hear the house calling for you, but if you're new to this game, there are a few things you've got to know before you can brush away the cobwebs and step through the door.
 
-When you're ready to jump in, you can skip ahead to "How to Play," on page 11.
+When you're ready to jump in, you can skip ahead to [How to Play — Before the Haunt](../3/).
 
 ### Cards
 
@@ -72,7 +72,7 @@ Items are the useful objects you may find as you explore the house, like a *Flas
 #### Omen Cards
 Omens are eerie harbingers of evil, like a *Dog* or an *Idol*. While Omens are similar to Items, only Omens have the potential to start the haunt.
 
-(See "Playing Event, Item, and Omen Cards" on page 12.)
+(See [Playing Event, Item, and Omen Cards](../3/#b6).)
 
 #### Scenario Cards
 Scenario cards provide themed reasons for your visit to the house, and they determine which haunt you will play.
@@ -90,7 +90,7 @@ As you play, you will construct the house using room tiles. When you explore, yo
 *Betrayal* comes with a lot of tokens. Most of them are used in haunts, where they will have rules attached to them. The haunt will tell you where to place them, how to use them, and what they represent. Sometimes they are used to denote steps in a ritual, or the amount of blood that you have collected. Look at the **Tokens Needed** section at the beginning of each haunt to see what tokens are used, and what they represent.
 
 ### Character Boards and Figures
-You may play as one of 12 different characters, whose details can be found on the six double-sided character boards. Each character board has a matching explorer figure, which you will move from tile to tile as you play the game. See pages 20–21 for full descriptions of all 12 characters.
+You may play as one of 12 different characters, whose details can be found on the six double-sided character boards. Each character board has a matching explorer figure, which you will move from tile to tile as you play the game. See [Character Descriptions](../5/) for full descriptions of all 12 characters.
 
 Each character has four traits—**Might**, **Speed**, **Knowledge**, and **Sanity**—which are shown on their respective character boards and which you will track using plastic clips. At the start of the game, set the clips to your character's starting green values and adjust them as needed. Trait values are public knowledge and should never be hidden from other players.
 
@@ -105,7 +105,7 @@ As you play, it is likely that you will have to adjust your trait values.
 ![[important.svg|18]] If a trait is at its lowest value, closest to the skull symbol (shown in red), it is **critical**.
 
 #### Character Death
-Characters cannot die before the haunt has started. If pre-haunt damage would cause any of your traits to go below critical, they remain at critical. Once the haunt has started, if *any* of a character's traits are reduced to the skull symbol, that character is **dead** (see "Dying," on page 19).
+Characters cannot die before the haunt has started. If pre-haunt damage would cause any of your traits to go below critical, they remain at critical. Once the haunt has started, if *any* of a character's traits are reduced to the skull symbol, that character is **dead** (see [Dying](../4/#b37)).
 
 #### How Damage Affects Your Traits
 Characters will inevitably take damage during the game, which will lower their trait values. There are three types of damage: **Physical**, **Mental**, and **General**.
@@ -114,8 +114,8 @@ Characters will inevitably take damage during the game, which will lower their t
 - ![[important.svg|18]] When you take **General** damage, you choose which of your traits are affected.
 
 When you take damage, lower your trait by the appropriate number of spaces and **not** by the numerical value of that damage. For example:
-1. Oliver takes 2 Physical damage, which he decides to assign to Might, which is currently at 3 3 4 4 5 6 **6** 7.
-2. Oliver moves his clip two spaces down, to 3 3 4 4 **5** 6 6 7.
+1. Oliver takes 2 Physical damage, which he decides to assign to Might, which is currently at <span class="trait-track">3 3 4 4 5 6 <u><b>6</b></u> 7</span>.
+2. Oliver moves his clip two spaces down, to <span class="trait-track">3 3 4 4 <u><b>5</b></u> 6 6 7</span>.
 
 Damage can be divided however you like, but only within the associated traits. For example, if you take 3 Physical damage, you could choose to lower your Might by 2 and your Speed by 1, but you could not lower your Knowledge or Sanity.
 
@@ -130,7 +130,7 @@ When you are asked to make a trait roll for Knowledge, Sanity, Speed, or Might, 
 *Michelle draws Funeral, an Event that asks her to make a Sanity roll. Her Sanity is 5, so she rolls 5 dice.*
 
 #### Attack Rolls
-When you attack, you must make a trait roll. The defender will roll the same trait. This trait will usually be Might, but some Items and Omens may instruct you to roll a different trait. Whoever rolls lower takes damage equal to the difference in the two rolls. (See "Attacking," on page 15.)
+When you attack, you must make a trait roll. The defender will roll the same trait. This trait will usually be Might, but some Items and Omens may instruct you to roll a different trait. Whoever rolls lower takes damage equal to the difference in the two rolls. (See [Attacking](../4/#b7).)
 
 #### Haunt Rolls
 When you are instructed to make a haunt roll, roll dice equal to the total number of Omens that have been drawn by all players. If the result of your roll is 5+, the haunt begins.

@@ -2,6 +2,20 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-25: Rulebook polish
+
+### Done
+
+- Chapter footer: arrows instead of "Previous" / "Next" (labels kept as `aria-label` and
+  `title`), on a three-column grid so "Contents" is always centered.
+- The Russian rulebook no longer marks fixes of the printed translation (✎ and footnotes
+  "В печатной V3.1: …"): readers don't know that edition. The list lives in the vault, in
+  `_Переводы/Поправки печатного перевода.md`. Notes stay only for disputed rules.
+- Page references from the printed book ("(See "Attacking," on page 15.)") are now links to
+  the section, resolved by the sync script like the index links; all 28 were checked.
+- Damage example: the clip positions are underlined as well as bold (`.trait-track`). The
+  underline sits below Georgia's old-style descenders and never skips them.
+
 ## 2026-10-25: Crime-scene tape until game night
 
 ### Done

@@ -28,7 +28,7 @@ In these haunts, it's every explorer for themselves! It's a contest between all 
 
 ## Starting the Haunt
 
-This section describes how haunts work, and how to set them up. You will find a detailed "walkthrough" of Haunt 1, both hero and traitor versions, on page 16.
+This section describes how haunts work, and how to set them up. You will find a detailed "walkthrough" of Haunt 1, both hero and traitor versions, in [Anatomy of a Haunt](./#b13).
 
 When the haunt to be played has been triggered and the players have located it in both haunt books, perform the following steps in order:
 1. The heroes read the introduction to their haunt aloud, to all players.
@@ -159,7 +159,7 @@ Some haunts allow the traitor to control monsters. These haunts will instruct yo
     - If there are multiple monsters of the **same type**, roll movement only once for that monster type.
     - If there are **multiple types** of monster, roll movement once for each monster type.
 - ![[important.svg|18]] Monsters can move between the Basement Landing and the Ground Floor Staircase as though they were adjacent.
-- Monsters may attack using normal attack rules; see page 15. Unless otherwise noted, monsters attack with Might.
+- Monsters may attack using normal attack rules; see [Attacking](./#b7). Unless otherwise noted, monsters attack with Might.
 - Like the traitor, monsters may also ignore damaging tile effects (see "The Traitor's Special Powers" on the previous page). If a monster uses a tile effect, they must roll dice for that effect.
 - Unless a haunt specifies otherwise, monsters cannot hold Items or Omens, and they cannot explore new tiles.
 

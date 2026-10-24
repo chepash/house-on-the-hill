@@ -9,7 +9,7 @@ After reviewing your game components and setting them up, you are ready to play.
 **Before the haunt begins,** you may do any of the following, in any order:
 - **Move** around the house and **discover** new room tiles (discovering a new room will end your turn).
 - **Trade** Items and Omens with an explorer on your tile (with their permission).
-- ![[important.svg|18]] Use your Items and Omens to take **special actions**. You may take each special action once during your turn. These actions are marked with this symbol: ![[special-action.svg|18]]. (See "Special Actions," on page 13.)
+- ![[important.svg|18]] Use your Items and Omens to take **special actions**. You may take each special action once during your turn. These actions are marked with this symbol: ![[special-action.svg|18]]. (See [Special Actions](./#b16).)
 
 You may take your actions in whatever order you like. For example, you could move once, trade an Item, move again, perform a special action, and then move a third time.
 

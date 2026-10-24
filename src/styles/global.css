@@ -567,6 +567,19 @@ a {
 }
 
 /* Footnotes: sources for clarifications (e.g. a BoardGameGeek discussion). */
+/* Clip positions on a trait track (rulebook damage example). Georgia's old-style figures
+   drop 3, 4, 5, 7, 9 below the baseline, so the underline sits below the descenders and
+   never skips them; otherwise it vanishes under the 5. */
+.prose .trait-track {
+  white-space: nowrap;
+}
+
+.prose .trait-track u {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+  text-decoration-skip-ink: none;
+}
+
 .prose .footnotes {
   margin-top: 2.5rem;
   padding-top: 1rem;
@@ -576,6 +589,25 @@ a {
 }
 
 /* Footer */
+
+/* Rulebook chapter footer: ← | Contents | →, with Contents always in the middle. */
+.page-footer.chapter-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.chapter-nav__arrow {
+  justify-self: start;
+  padding: 0 0.5rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.chapter-nav__arrow--next {
+  justify-self: end;
+}
 
 .page-footer {
   display: flex;

@@ -27,9 +27,26 @@ const next = chapter < chapters[chapters.length - 1] ? chapter + 1 : undefined;
     <Content />
   </article>
 
-  <nav class="page-footer">
-    {prev ? <a href={getRelativeLocaleUrl(lang, `rules/${prev}/`)}>← {t(lang, 'rules.prev')}</a> : <span />}
+  {/* Arrows instead of words, so "Contents" stays centered in both languages. */}
+  <nav class="page-footer chapter-nav">
+    {
+      prev ? (
+        <a class="chapter-nav__arrow" href={getRelativeLocaleUrl(lang, `rules/${prev}/`)} aria-label={t(lang, 'rules.prev')} title={t(lang, 'rules.prev')}>
+          ←
+        </a>
+      ) : (
+        <span />
+      )
+    }
     <a href={getRelativeLocaleUrl(lang, 'rules/')}>{t(lang, 'rules.contents')}</a>
-    {next ? <a href={getRelativeLocaleUrl(lang, `rules/${next}/`)}>{t(lang, 'rules.next')} →</a> : <span />}
+    {
+      next ? (
+        <a class="chapter-nav__arrow chapter-nav__arrow--next" href={getRelativeLocaleUrl(lang, `rules/${next}/`)} aria-label={t(lang, 'rules.next')} title={t(lang, 'rules.next')}>
+          →
+        </a>
+      ) : (
+        <span />
+      )
+    }
   </nav>
 </Base>
