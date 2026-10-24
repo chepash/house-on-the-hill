@@ -10,6 +10,9 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   «Предательство в доме на холме»). Removed the short site name subtitle (it is in the
   header), the how-to paragraph under "Which side are you on?" and the description on the
   terms card. UI keys `site.subtitle`, `home.side.body`, `home.terms.body` replaced or removed.
+- Book cards (`.choice--book`, home page only): no "Heroes" / "Traitor" label, the book title
+  in the book's color, the icon enlarged to 3.5rem and centered against the two text lines.
+  The book list pages still show the side label above the title.
 
 ### Decisions
 

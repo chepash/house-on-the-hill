@@ -26,10 +26,9 @@ const bookIcons = {
     {
       books.map((book) => (
         <li>
-          <a class="choice" data-book={book} href={getRelativeLocaleUrl(lang, `${book}/`)}>
-            <img class="choice__icon" src={withBase(bookIcons[book])} alt="" width="40" height="40" />
+          <a class="choice choice--book" data-book={book} href={getRelativeLocaleUrl(lang, `${book}/`)}>
+            <img class="choice__icon" src={withBase(bookIcons[book])} alt="" width="56" height="56" />
             <span class="choice__text">
-              <span class="choice__side">{t(lang, `book.${book}.side`)}</span>
               <span class="choice__title">{t(lang, `book.${book}.title`)}</span>
               <span class="choice__body">{t(lang, `book.${book}.body`)}</span>
             </span>

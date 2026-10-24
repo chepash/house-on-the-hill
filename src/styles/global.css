@@ -195,6 +195,22 @@ a {
   flex: 0 0 auto;
 }
 
+/* Home page book cards: a large icon beside the title and one line of text,
+   the title in the book's own color. */
+.choice--book {
+  align-items: center;
+}
+
+.choice--book .choice__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+.choice--book .choice__title {
+  color: var(--accent);
+}
+
 .choice__text {
   display: grid;
   gap: 0.15rem;
