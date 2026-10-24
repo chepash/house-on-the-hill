@@ -16,6 +16,9 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   it matches the black skull of the Traitor's Tome.
 - Book list pages: the "Heroes" / "Traitor" label above the title is gone; the title itself
   is in the book's color. The `book.*.side` UI keys are removed.
+- Haunt page heading: the number now uses the UI font. Georgia's old-style figures drop
+  3, 4, 5, 7 and 9 below the baseline ("3", "37" looked lower than the title), and Georgia
+  has no lining variant.
 
 ### Decisions
 

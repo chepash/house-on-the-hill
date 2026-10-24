@@ -161,8 +161,12 @@ a {
   color: var(--accent);
 }
 
+/* Georgia has old-style figures (3, 4, 5, 7, 9 drop below the baseline) and no lining
+   variant, so the number uses the UI font, like the numbers in the haunt list. */
 .haunt-number {
   color: var(--accent);
+  font-family: var(--font-ui);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 /* Home: side choice */
