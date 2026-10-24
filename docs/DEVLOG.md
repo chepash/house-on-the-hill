@@ -9,17 +9,20 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
 - Terms page (both languages, in the vault): Large Monster tokens are now their own bullet
   with the Werewolf token icon, instead of a second sentence in the Small Monster bullet.
 - Secrets of Survival 16 (both languages, in the vault): a clarification after the Remains
-  rules: Remains are not Items or Omens but may be looted instead of one; one loot takes all
-  the Remains the corpse carried and is the looter's one loot from that corpse this turn.
+  rules: Remains are not Items or Omens but can be looted; looting takes all the Remains the
+  corpse carried at once, and this haunt rule overrides the one Item or Omen per turn limit.
 
 ### Decisions
 
 - The printed sentence "If any loot Remains from an explorer's corpse..." is ungrammatical
   and does not say how it fits the rulebook limit (one Item or Omen per corpse per turn).
-  The ruling follows the wording other haunts use for lootable tokens ("instead of an item
-  or omen", "only one thing per corpse per turn"). Other haunts are not named on the page.
-- Left open: whether the traitor may loot Remains (the rulebook lets any explorer loot;
-  the Traitor's Tome does not mention Remains looting).
+  The rulebook says each haunt has special rules that change the base rules, so "you must
+  take all Remains" wins over that limit. A first draft also said looting Remains used up
+  the turn's one loot (as other haunts say for their tokens); dropped, haunt 16 says nothing
+  of the kind.
+- The traitor still counts as an explorer (rulebook, "Playing the Haunt") and may loot
+  corpses, so by the letter the traitor may loot Remains too. Not written on the page yet;
+  the owner decides.
 
 ## 2026-10-24: Haunt 50 clarification (Landing tiles)
 
