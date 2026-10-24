@@ -18,11 +18,9 @@ const bookIcons = {
 ---
 
 <Base lang={lang}>
-  <h1>{t(lang, 'site.title')}</h1>
-  <p class="subtitle">{t(lang, 'site.subtitle')}</p>
+  <h1>{t(lang, 'game.title')}</h1>
 
   <h2 id="side" data-anchor>{t(lang, 'home.side.title')}</h2>
-  <p>{t(lang, 'home.side.body')}</p>
 
   <ul class="choice-list">
     {
@@ -44,7 +42,6 @@ const bookIcons = {
   <a class="choice choice--minor" href={getRelativeLocaleUrl(lang, 'terms/')}>
     <span class="choice__text">
       <span class="choice__title">{t(lang, 'terms.title')}</span>
-      <span class="choice__body">{t(lang, 'home.terms.body')}</span>
     </span>
   </a>
 </Base>

@@ -14,14 +14,11 @@ export function isLang(value: unknown): value is Lang {
 
 const en = {
   'site.title': 'House on the Hill',
-  'site.subtitle': 'Betrayal at House on the Hill, 3rd Edition',
+  'game.title': 'Betrayal at House on the Hill',
   'site.description': 'Traitor’s Tome and Secrets of Survival in English and Russian, ready for the phone.',
   'lang.label': 'Language',
 
   'home.side.title': 'Which side are you on?',
-  'home.side.body':
-    'When the haunt begins, find its number on the Scenario card, open your book below and pick the haunt. If the haunt is read from the other book, its page will tell you. Switch between EN and RU at any moment: you stay at the same place.',
-  'home.terms.body': 'Game terms, icons and how to read {3/4/5/6}. No spoilers.',
 
   'book.secrets-of-survival.title': 'Secrets of Survival',
   'book.secrets-of-survival.side': 'Heroes',
@@ -46,14 +43,11 @@ export type UiKey = keyof typeof en;
 
 const ru: Record<UiKey, string> = {
   'site.title': 'Дом на холме',
-  'site.subtitle': 'Предательство в доме на холме, третье издание',
+  'game.title': 'Предательство в доме на холме',
   'site.description': 'Книга предателя и книга выживших на русском и английском, удобно с телефона.',
   'lang.label': 'Язык',
 
   'home.side.title': 'На чьей вы стороне?',
-  'home.side.body':
-    'Когда начнётся сценарий, найдите его номер на карточке сценария, откройте свою книгу и выберите сценарий. Если сценарий читают по другой книге, на его странице это будет сказано. Переключать EN и RU можно в любой момент: вы останетесь на том же месте.',
-  'home.terms.body': 'Термины игры, иконки и как читать {3/4/5/6}. Без спойлеров.',
 
   'book.secrets-of-survival.title': 'Книга выживших',
   'book.secrets-of-survival.side': 'Герои',

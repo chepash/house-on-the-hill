@@ -2,6 +2,19 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Minimal home page
+
+### Done
+
+- Home page: the heading is now the game's name ("Betrayal at House on the Hill" /
+  «Предательство в доме на холме»). Removed the short site name subtitle (it is in the
+  header), the how-to paragraph under "Which side are you on?" and the description on the
+  terms card. UI keys `site.subtitle`, `home.side.body`, `home.terms.body` replaced or removed.
+
+### Decisions
+
+- The edition ("3rd Edition") is technical information and stays in the README only.
+
 ## 2026-10-24: Haunt 16 clarification, Large Monster tokens in the glossary
 
 ### Done
