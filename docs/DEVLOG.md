@@ -2,6 +2,25 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-25: Russian term for haunt: «наваждение»
+
+### Done
+
+- In all Russian notes, the rulebook, the terms page and the UI, "haunt" is now «наваждение»
+  instead of «сценарий» (with case and gender agreement): «Наваждение 18», «бросок
+  наваждения», «инициатор наваждения», chapters «До / После начала наваждения».
+- «сценарий» is kept only for the Scenario card («карточка сценария») and for the film
+  script in haunt 45. "curse" stays «проклятие».
+- Term hints (`remark-term-hints.mjs`): «инициатор наваждения» -> haunt revealer, plus new
+  hints «наваждение» -> haunt and «карточка сценария» -> Scenario card.
+- All 218 anchored links of the rulebook pages and the index were re-checked after the rename.
+
+### Decisions
+
+- There is no printed Russian edition: the group plays the English box, so the Russian
+  terms are ours to choose. Two English terms (haunt, Scenario card) no longer share one
+  Russian word.
+
 ## 2026-10-25: Rulebook polish
 
 ### Done

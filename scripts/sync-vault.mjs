@@ -25,8 +25,8 @@ const BOOKS = [
 const RULEBOOK_CHAPTERS = [
   { en: '1 Preliminaries', ru: '1 Введение' },
   { en: '2 Components and Setup', ru: '2 Компоненты и подготовка' },
-  { en: '3 Before the Haunt', ru: '3 До начала сценария' },
-  { en: '4 After the Haunt Begins', ru: '4 После начала сценария' },
+  { en: '3 Before the Haunt', ru: '3 До начала наваждения' },
+  { en: '4 After the Haunt Begins', ru: '4 После начала наваждения' },
   { en: '5 Characters', ru: '5 Персонажи' },
 ];
 

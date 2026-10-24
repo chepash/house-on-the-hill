@@ -72,12 +72,12 @@ const ru: Record<UiKey, string> = {
   'rules.prev': 'Назад',
   'rules.next': 'Далее',
 
-  'list.jump.label': 'Номер сценария',
+  'list.jump.label': 'Номер наваждения',
   'list.jump.submit': 'Открыть',
-  'list.jump.notFound': 'В этой книге нет сценария с таким номером.',
+  'list.jump.notFound': 'В этой книге нет наваждения с таким номером.',
 
-  'haunt.back': 'Все сценарии',
-  'haunt.elsewhere': 'Этот сценарий напечатан в другой книге. Все читают его там.',
+  'haunt.back': 'Все наваждения',
+  'haunt.elsewhere': 'Это наваждение напечатано в другой книге. Все читают его там.',
 };
 
 const strings: Record<Lang, Record<UiKey, string>> = { en, ru };

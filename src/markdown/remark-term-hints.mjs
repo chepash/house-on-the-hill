@@ -18,7 +18,10 @@ const ADJ = '(?:ый|ий|ого|его|ому|ему|ым|им|ом|ем|ая|�
 export const TERMS = [
   [`исследовател(?:ь|${N}) паранормального`, null],
   [`скрыт${ADJ} предател(?:ь|${N})`, 'hidden traitor', 'hidden traitors'],
-  [`инициатор${N} сценари(?:я|ев)`, 'haunt revealer'],
+  [`инициатор${N} наваждени(?:я|й)`, 'haunt revealer'],
+  // Scenario card and haunt are different terms; the hints keep them apart.
+  [`карточк(?:а|и|е|у|ой|ам|ами|ах)? сценари(?:я|ев)`, 'Scenario card'],
+  [`наваждени(?:е|я|ю|ем|и|й|ям|ями|ях)`, 'haunt'],
   [`исследовател(?:ь|${N})`, 'explorer', 'explorers'],
   [`геро(?:й|${N})`, 'hero', 'heroes'],
   [`предател(?:ь|${N})`, 'traitor', 'traitors'],
