@@ -2,6 +2,45 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-24: Phase 1, haunt books
+
+### Done
+
+- `npm run sync`: copies the vault notes into `src/content/` and the icons into
+  `public/icons/`. Result: 44 Traitor's Tome and 47 Secrets of Survival notes per
+  language, the terms page, 64 icons (~400 KB). All EN/RU pairs have identical structure.
+- Content collections `haunts` and `pages` with zod schemas.
+- `remark-obsidian`: icon embeds, callouts (action, monster, death, important, clarify;
+  nested), positional anchors on headings and callouts.
+- Pages: side choice on the home page, haunt list per book with a number jump
+  (React island), haunt page, terms page. 191 pages in total.
+- The language switch now anchors on headings and callouts (`[data-anchor]`).
+- Checked the rendered HTML (no raw Obsidian syntax, anchor counts equal per pair,
+  every referenced icon exists) and screenshots at phone width in headless Edge.
+
+### Decisions
+
+- **Scope change: no rulebook.** Players use the printed rulebook; the site has the
+  two haunt books and the terms page.
+- **The vault is the source, the repo holds a copy.** GitHub Actions cannot see the
+  vault, so synced content and icons are committed. The vault's Index notes are not
+  copied; the site builds its own lists.
+- **remark instead of Sätteri.** Astro 7's default Markdown processor (Sätteri 0.10) has
+  no callouts or soft line breaks, and its plugin API is new. The official `unified()`
+  processor runs ordinary remark plugins.
+- **Positional anchors instead of `{#id}` in the notes.** The notes are already
+  structurally identical in both languages, so `b1`, `b2`, ... need no extra markup,
+  and the sync script guards the structure.
+- **Light theme only.** The icons are black, as printed; a dark theme would need icon
+  backgrounds.
+- **Spoiler safety.** No links between the books, except the two range pointer notes
+  (2–8, 9–12), which link to the other book's list, not to a haunt.
+
+### Next
+
+- Try the site on a phone at the table; collect layout feedback.
+- Phase 2 items in PLAN.md (lookup by Scenario card + trigger, search, PWA).
+
 ## 2026-10-24: Phase 0, scaffold and deploy
 
 ### Done

@@ -1,156 +1,126 @@
 # Development plan
 
-A static reader for the **Betrayal at House on the Hill, 3rd Edition** books
-(Rulebook, Traitor's Tome, Secrets of Survival) in English and Russian,
-hosted on GitHub Pages.
+A static reader for the haunt books of **Betrayal at House on the Hill, 3rd Edition**
+(Traitor's Tome and Secrets of Survival) in English and Russian, hosted on GitHub Pages.
+
+The rulebook is out of scope: players use the printed one. A short glossary page
+("Terms and Clarifications") is included instead.
 
 ## Goals
 
-- Read all three books comfortably on desktop and phone, including at the game table.
-- Switch between English and Russian at any moment without losing the reading position.
-- Find any rule or haunt quickly: main menu, table of contents, search.
-- Keep the haunt books spoiler-safe: the traitor and the heroes read different books.
+- At the table, a player opens the site, picks their side (heroes or traitor),
+  picks the haunt and reads it comfortably on a phone.
+- Switch between English and Russian at any moment without losing the reading
+  position, e.g. to check the original terminology.
+- Keep the icons from the books: players often scan for them.
+- Spoiler safety: the heroes' and the traitor's books never link into each other's haunts.
 
 ## Non-goals (for now)
 
 - Accounts, server-side logic, comments.
-- Editing content in the browser. Content lives in Markdown in this repo.
+- Editing content in the browser. The notes are written in the Obsidian vault.
 
 ## Stack
 
 | Concern | Choice | Why |
 | --- | --- | --- |
 | Framework | Astro 7 | Content-first static site generator; ships plain HTML, JS only where needed. |
-| Interactive UI | React islands (`@astrojs/react`) | Language switch, menus, search UI. Familiar stack. |
-| Content | Markdown + Astro content collections | Typed frontmatter (zod schemas), one file per chapter or haunt. |
+| Interactive UI | React islands (`@astrojs/react`) | Language switch, haunt number jump. |
+| Content | Markdown + Astro content collections | Typed frontmatter (zod schemas), one file per haunt side. |
+| Markdown | `unified()` processor + own remark plugin | Obsidian callouts, icon embeds, soft line breaks. |
 | Language | TypeScript, strict | |
-| Search | Pagefind (later) | Static, multilingual full-text search with no backend. |
 | Hosting | GitHub Pages via GitHub Actions | Free, deploys on push to `main`. |
-| Runtime | Node 24 LTS | Required by Astro 7 (`>=22`). |
+| Runtime | Node 24 LTS | Required by Astro 7 (`>=22.23`). |
 
 The site is served from `https://chepash.github.io/house-on-the-hill/`,
-so Astro is configured with `base: '/house-on-the-hill'`. All internal links
-must go through a base-aware helper, never hard-coded `/...` paths.
+so Astro is configured with `base: '/house-on-the-hill'`. Internal links go through
+`getRelativeLocaleUrl` or `withBase`, never hard-coded `/...` paths.
 
 ## Information architecture
 
 ```
-/                                  -> redirect to /en/ or /ru/ (saved choice, then browser language)
-/{lang}/                           main menu: the three books
-/{lang}/rules/                     rulebook table of contents
-/{lang}/rules/{chapter}/           one rulebook chapter
-/{lang}/haunts/                    haunt index: number + title only (spoiler-safe)
-/{lang}/haunts/{nn}/               haunt hub: pick "Traitor" or "Heroes", with a spoiler warning
-/{lang}/traitors-tome/{nn}/        haunt nn, traitor side
-/{lang}/secrets-of-survival/{nn}/  haunt nn, heroes side
+/                                     -> redirect to /en/ or /ru/ (saved choice, then browser language)
+/{lang}/                              "Which side are you on?": the two books + terms
+/{lang}/secrets-of-survival/          heroes' haunt list, with a haunt number jump
+/{lang}/secrets-of-survival/{nn}/     heroes' side of haunt nn
+/{lang}/traitors-tome/                traitor's haunt list
+/{lang}/traitors-tome/{nn}/           traitor's side of haunt nn
+/{lang}/terms/                        Terms and Clarifications (no spoilers)
 ```
 
-`{lang}` is `en` or `ru`. `{nn}` is the two-digit haunt number (`01`..`50`).
+`{lang}` is `en` or `ru`. `{nn}` is the two-digit haunt number, or a range for the
+pointer notes: `traitors-tome/02-08` (no traitor / hidden traitor, see Secrets of Survival)
+and `secrets-of-survival/09-12` (free-for-all, see Traitor's Tome).
 Every page exists in both languages under the same path, so switching language
 only swaps the prefix.
 
-### Persistent UI
+Each book has its own accent color (heroes blue, traitor red) and a spoiler
+warning on its list page.
 
-- Header: site title (to the main menu), current book, language switch `EN | RU`.
-- Sidebar (drawer on mobile): table of contents of the current book.
-- Footer of each chapter: previous / next.
+## Content pipeline
+
+The Obsidian vault is the source of truth. `npm run sync` (scripts/sync-vault.mjs) copies it
+into the repo, and the copy is committed: the site never reads the vault directly.
+
+```
+vault                                         repo
+English/Traitor's Tome/18 A Nice Ring….md  -> src/content/haunts/traitors-tome/en/18.md
+Русский/Книга предателя/18 Симпатичное….md -> src/content/haunts/traitors-tome/ru/18.md
+English/Terms and Clarifications.md        -> src/content/pages/en/terms.md
+_Справочник/иконки/*, _Справочник/жетоны/*   -> public/icons/
+```
+
+The sync script:
+
+- maps the Russian frontmatter keys to the English ones and writes one schema
+  (`title`, `titleEn`, `number`, `lastNumber`, `stub`, `scenarioCard`, `trigger`, `traitor`);
+- takes the title from the H1 and removes the H1, the Obsidian footer navigation
+  and any other line with a vault link;
+- skips the vault's Index / Оглавление notes (the site builds its own lists);
+- checks that every note exists in both languages with the same sequence of
+  headings and callouts, and prints warnings otherwise.
+
+Rendering (src/markdown/remark-obsidian.mjs):
+
+- `![[name.png|18]]` -> `<img class="icon">` from `public/icons/`;
+- `> [!type] Title` callouts, nested too -> `<aside class="callout">` with the book's icon;
+- soft line breaks are kept as in Obsidian (remark-breaks).
 
 ## Language switching without losing position
 
-1. Both language versions of a page have the **same block structure**:
-   every heading carries the same explicit, English, stable id
-   (for example `## Setup {#setup}`) in both files.
-2. On switch, a small client script finds the topmost visible heading,
-   navigates to the same path in the other language with `#that-id`,
-   and restores the offset. Astro view transitions make the swap smooth.
-3. The chosen language is stored in `localStorage` and used on the next visit.
-
-Optional later step: paragraph-level ids for finer alignment, and a
-side-by-side "bilingual" mode.
-
-## Content layout
-
-```
-src/content/
-  rules/
-    en/01-introduction.md
-    ru/01-introduction.md
-  traitors-tome/
-    en/01.md ... en/50.md
-    ru/01.md ... ru/50.md
-  secrets-of-survival/
-    en/01.md ... en/50.md
-    ru/01.md ... ru/50.md
-src/assets/images/      shared images (room tiles, icons, diagrams)
-```
-
-Rules for content files:
-
-- Same file name in `en/` and `ru/`. The file name (without language) is the page id.
-- Same heading tree in both languages, with identical `{#id}` on every heading.
-- Frontmatter:
-
-```yaml
-# rules chapter
-title: Setup
-order: 3
-
-# haunt (either tome)
-haunt: 1
-title: Haunt title
-```
-
-- Source PDFs and translation notes stay in the Obsidian vault, not in this repo.
-  The Russian text follows the chosen translation versions (rules V3.1, tomes V1.1 with errata).
+1. Every heading and callout gets a positional id (`b1`, `b2`, ...) and `data-anchor`.
+   Both languages have the same structure (checked by the sync), so the same id is
+   the same block.
+2. On switch, the topmost anchor at or above the reading line and its offset from the
+   viewport top go to `sessionStorage`; after the client-router swap the same anchor is
+   scrolled back to the same offset.
+3. The last used language is stored in `localStorage` and used by the root redirect.
 
 ## Phases
 
 Each phase ends with a deploy and an entry in [DEVLOG.md](DEVLOG.md).
 
-### Phase 0: Scaffold and deploy
+### Phase 0: Scaffold and deploy (done)
 
-- Astro + React + TypeScript project, `base` set for GitHub Pages.
-- GitHub Actions workflow that builds and deploys on push to `main`.
-- `/en/` and `/ru/` placeholder pages with a working language switch.
+### Phase 1: Haunt books (done)
 
-### Phase 1: Reader skeleton
+- Vault sync, content collections, remark plugin for the Obsidian syntax.
+- Home page with the side choice, haunt lists, haunt pages, terms page.
+- Position-preserving language switch based on shared anchors.
 
-- Content collections and schemas for the three books.
-- Markdown heading-id support (`{#id}`).
-- Reader layout: header, sidebar TOC, prose typography, prev/next.
-- One real rulebook chapter imported in both languages to validate the format.
+### Phase 2: At-the-table polish
 
-### Phase 2: Seamless language switch
-
-- Position-preserving switch (topmost heading anchor).
-- Saved language preference, root redirect.
-- Build-time check: every page exists in both languages with the same heading ids.
-
-### Phase 3: Rulebook
-
-- Full rulebook in both languages.
-- Main menu and rulebook table of contents.
-- Cross-links between rules sections.
-
-### Phase 4: Haunt books
-
-- Traitor's Tome and Secrets of Survival, all 50 haunts in both languages.
-- Haunt index and haunt hub pages with spoiler warnings.
-- Link from a haunt side to the shared rules it references.
-
-### Phase 5: Polish
-
-- Search (Pagefind, per language).
-- Dark theme, mobile layout pass, print styles.
-- Haunt lookup: omen + room -> haunt number.
-- Optional: offline support (PWA) for use at the table.
+- Check on real phones; tune typography and icon sizes.
+- Haunt lookup by Scenario card + trigger (both are in the frontmatter).
+- Search (Pagefind, per language), if the lists are not enough.
+- Optional: offline support (PWA), print styles, a dark theme with icon backgrounds.
 
 ## Risks and open questions
 
 - **Copyright.** The books are commercial content by Avalon Hill (Hasbro).
   GitHub Pages on a free plan requires a public repository, so the full text
-  becomes public. Consider this before publishing the real books.
-- **Content alignment.** Language switching relies on identical heading ids
-  in both languages. The build-time check in Phase 2 should catch drift.
-- **Images.** Room tiles, cards and diagrams from the PDFs need extraction or
-  recreation; decide per image.
+  becomes public.
+- **Content alignment.** The switch relies on identical structure in both languages.
+  The sync script warns about drift; keep the warning list empty.
+- **Markdown cache.** Astro caches rendered collection entries. After changing the
+  remark plugin, delete `node_modules/.astro` and `.astro` before building.

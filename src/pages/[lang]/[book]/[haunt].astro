@@ -1,0 +1,46 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../../i18n/ui';
+import { books, getHaunts, hauntLabel, hauntSlug, otherBook, type Book, type Haunt } from '../../../lib/haunts';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of langs) {
+    for (const book of books) {
+      for (const haunt of await getHaunts(book, lang)) {
+        paths.push({ params: { lang, book, haunt: hauntSlug(haunt) }, props: { haunt } });
+      }
+    }
+  }
+  return paths;
+}
+
+const lang = Astro.params.lang as Lang;
+const book = Astro.params.book as Book;
+const { haunt } = Astro.props as { haunt: Haunt };
+const { Content } = await render(haunt);
+const label = hauntLabel(haunt);
+---
+
+<Base lang={lang} book={book} title={`${label} · ${haunt.data.title}`}>
+  <p class="eyebrow">
+    <a href={getRelativeLocaleUrl(lang, `${book}/`)}>{t(lang, `book.${book}.title`)}</a>
+  </p>
+  <h1><span class="haunt-number">{label}</span> {haunt.data.title}</h1>
+  {haunt.data.titleEn && <p class="subtitle" lang="en">{haunt.data.titleEn}</p>}
+
+  <article class="prose">
+    <Content />
+  </article>
+
+  <nav class="page-footer">
+    <a href={getRelativeLocaleUrl(lang, `${book}/`)}>← {t(lang, 'haunt.back')}</a>
+    {
+      haunt.data.stub && (
+        <a href={getRelativeLocaleUrl(lang, `${otherBook(book)}/`)}>{t(lang, `book.${otherBook(book)}.title`)} →</a>
+      )
+    }
+  </nav>
+</Base>

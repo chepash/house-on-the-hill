@@ -1,16 +1,20 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { ClientRouter } from 'astro:transitions';
 import LanguageSwitch from '../components/LanguageSwitch';
 import { localizedUrls, withBase } from '../i18n/paths';
 import { t, type Lang } from '../i18n/ui';
+import type { Book } from '../lib/haunts';
 import '../styles/global.css';
 
 type Props = {
   lang: Lang;
   title?: string;
+  /** Colors the page by side, so players see at a glance whose book is open. */
+  book?: Book;
 };
 
-const { lang, title } = Astro.props;
+const { lang, title, book } = Astro.props;
 const siteTitle = t(lang, 'site.title');
 const urls = localizedUrls(Astro.url.pathname);
 ---
@@ -27,9 +31,9 @@ const urls = localizedUrls(Astro.url.pathname);
     <title>{title ? `${title} · ${siteTitle}` : siteTitle}</title>
     <ClientRouter />
   </head>
-  <body>
+  <body data-book={book}>
     <header class="site-header">
-      <a class="site-header__title" href={urls[lang]}>{siteTitle}</a>
+      <a class="site-header__title" href={getRelativeLocaleUrl(lang)}>{siteTitle}</a>
       <LanguageSwitch client:load current={lang} urls={urls} label={t(lang, 'lang.label')} />
     </header>
     <main class="page">

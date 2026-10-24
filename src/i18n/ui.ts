@@ -15,32 +15,30 @@ export function isLang(value: unknown): value is Lang {
 const en = {
   'site.title': 'House on the Hill',
   'site.subtitle': 'Betrayal at House on the Hill, 3rd Edition',
-  'site.description': 'Rulebook, Traitor’s Tome and Secrets of Survival in English and Russian.',
+  'site.description': 'Traitor’s Tome and Secrets of Survival in English and Russian, ready for the phone.',
   'lang.label': 'Language',
-  'status.soon': 'Coming soon',
 
-  'about.title': 'About',
-  'about.body.1':
-    'This site lets you read the three books of Betrayal at House on the Hill, 3rd Edition, right in the browser: on a laptop while learning the rules, or on a phone at the table.',
-  'about.body.2':
-    'Every page exists in English and Russian. Use the EN / RU switch in the header at any moment: you stay on the same page and at the same section.',
+  'home.side.title': 'Which side are you on?',
+  'home.side.body':
+    'When the haunt begins, find its number on the Scenario card, open your book below and pick the haunt. Switch between EN and RU at any moment: you stay at the same place.',
+  'home.terms.body': 'Game terms, icons and how to read {3/4/5/6}. No spoilers.',
 
-  'books.title': 'Books',
-  'book.rules.title': 'Rulebook',
-  'book.rules.body':
-    'How to set up the house, explore it room by room, use items, omens and events, and what happens when the haunt begins.',
-  'book.traitors-tome.title': 'Traitor’s Tome',
-  'book.traitors-tome.body':
-    'The traitor’s side of every haunt: secret goals and special rules. Only the traitor should read it.',
   'book.secrets-of-survival.title': 'Secrets of Survival',
-  'book.secrets-of-survival.body':
-    'The heroes’ side of every haunt: how the survivors can win. The traitor should not read it.',
+  'book.secrets-of-survival.side': 'Heroes',
+  'book.secrets-of-survival.body': 'For the heroes. Also for haunts 2–8, which have no traitor or a hidden one.',
+  'book.secrets-of-survival.warning': 'Heroes’ book. The traitor must not read it.',
+  'book.traitors-tome.title': 'Traitor’s Tome',
+  'book.traitors-tome.side': 'Traitor',
+  'book.traitors-tome.body': 'For the traitor. Also for the free-for-all haunts 9–12, read by everyone.',
+  'book.traitors-tome.warning': 'Traitor’s book. Heroes must not read it.',
 
-  'switch.title': 'Switching languages',
-  'switch.body.1':
-    'To try it, scroll down until this section is at the top of the screen and press EN or RU. The page reloads in the other language and keeps this section in place.',
-  'switch.body.2':
-    'Your choice is remembered: the next time you open the site, it starts in the language you used last.',
+  'terms.title': 'Terms and Clarifications',
+
+  'list.jump.label': 'Haunt number',
+  'list.jump.submit': 'Open',
+  'list.jump.notFound': 'There is no haunt with this number in this book.',
+
+  'haunt.back': 'All haunts',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -48,32 +46,30 @@ export type UiKey = keyof typeof en;
 const ru: Record<UiKey, string> = {
   'site.title': 'Дом на холме',
   'site.subtitle': 'Предательство в доме на холме, третье издание',
-  'site.description': 'Книга правил, книга предателя и книга выживших на русском и английском.',
+  'site.description': 'Книга предателя и книга выживших на русском и английском, удобно с телефона.',
   'lang.label': 'Язык',
-  'status.soon': 'Скоро',
 
-  'about.title': 'О сайте',
-  'about.body.1':
-    'Здесь можно читать все три книги «Предательства в доме на холме» (третье издание) прямо в браузере: с ноутбука, пока разбираетесь в правилах, или с телефона за игровым столом.',
-  'about.body.2':
-    'Каждая страница есть на русском и на английском. Переключатель EN / RU в шапке работает в любой момент: вы останетесь на той же странице и в том же разделе.',
+  'home.side.title': 'На чьей вы стороне?',
+  'home.side.body':
+    'Когда начнётся сценарий, найдите его номер на карточке сценария, откройте свою книгу и выберите сценарий. Переключать EN и RU можно в любой момент: вы останетесь на том же месте.',
+  'home.terms.body': 'Термины игры, иконки и как читать {3/4/5/6}. Без спойлеров.',
 
-  'books.title': 'Книги',
-  'book.rules.title': 'Книга правил',
-  'book.rules.body':
-    'Как подготовить дом к игре, исследовать его комнату за комнатой, пользоваться предметами, знамениями и событиями, и что происходит, когда начинается сценарий.',
-  'book.traitors-tome.title': 'Книга предателя',
-  'book.traitors-tome.body':
-    'Сторона предателя в каждом сценарии: тайные цели и особые правила. Читает только предатель.',
   'book.secrets-of-survival.title': 'Книга выживших',
-  'book.secrets-of-survival.body':
-    'Сторона героев в каждом сценарии: как выжившим победить. Предателю её читать нельзя.',
+  'book.secrets-of-survival.side': 'Герои',
+  'book.secrets-of-survival.body': 'Для героев. А также для сценариев 2–8, где предателя нет или он скрыт.',
+  'book.secrets-of-survival.warning': 'Книга героев. Предателю её читать нельзя.',
+  'book.traitors-tome.title': 'Книга предателя',
+  'book.traitors-tome.side': 'Предатель',
+  'book.traitors-tome.body': 'Для предателя. А также для сценариев 9–12 «каждый сам за себя», их читают все.',
+  'book.traitors-tome.warning': 'Книга предателя. Героям её читать нельзя.',
 
-  'switch.title': 'Переключение языка',
-  'switch.body.1':
-    'Чтобы попробовать, прокрутите страницу так, чтобы этот раздел оказался вверху экрана, и нажмите EN или RU. Страница откроется на другом языке, и этот раздел останется на месте.',
-  'switch.body.2':
-    'Выбор запоминается: в следующий раз сайт откроется на том языке, которым вы пользовались последним.',
+  'terms.title': 'Термины и пояснения',
+
+  'list.jump.label': 'Номер сценария',
+  'list.jump.submit': 'Открыть',
+  'list.jump.notFound': 'В этой книге нет сценария с таким номером.',
+
+  'haunt.back': 'Все сценарии',
 };
 
 const strings: Record<Lang, Record<UiKey, string>> = { en, ru };

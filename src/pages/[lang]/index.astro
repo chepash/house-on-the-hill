@@ -1,37 +1,50 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import Base from '../../layouts/Base.astro';
 import { langs, t, type Lang } from '../../i18n/ui';
+import { withBase } from '../../i18n/paths';
+import { books } from '../../lib/haunts';
 
 export function getStaticPaths() {
   return langs.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Lang;
-const books = ['rules', 'traitors-tome', 'secrets-of-survival'] as const;
+
+const bookIcons = {
+  'secrets-of-survival': 'icons/hero.png',
+  'traitors-tome': 'icons/death.svg',
+} as const;
 ---
 
 <Base lang={lang}>
   <h1>{t(lang, 'site.title')}</h1>
   <p class="subtitle">{t(lang, 'site.subtitle')}</p>
 
-  <h2 id="about">{t(lang, 'about.title')}</h2>
-  <p>{t(lang, 'about.body.1')}</p>
-  <p>{t(lang, 'about.body.2')}</p>
+  <h2 id="side" data-anchor>{t(lang, 'home.side.title')}</h2>
+  <p>{t(lang, 'home.side.body')}</p>
 
-  <h2 id="books">{t(lang, 'books.title')}</h2>
-  <ul class="book-list">
+  <ul class="choice-list">
     {
       books.map((book) => (
-        <li class="book-card">
-          <h3 id={book}>{t(lang, `book.${book}.title`)}</h3>
-          <p>{t(lang, `book.${book}.body`)}</p>
-          <span class="book-card__status">{t(lang, 'status.soon')}</span>
+        <li>
+          <a class="choice" data-book={book} href={getRelativeLocaleUrl(lang, `${book}/`)}>
+            <img class="choice__icon" src={withBase(bookIcons[book])} alt="" width="40" height="40" />
+            <span class="choice__text">
+              <span class="choice__side">{t(lang, `book.${book}.side`)}</span>
+              <span class="choice__title">{t(lang, `book.${book}.title`)}</span>
+              <span class="choice__body">{t(lang, `book.${book}.body`)}</span>
+            </span>
+          </a>
         </li>
       ))
     }
   </ul>
 
-  <h2 id="language-switch">{t(lang, 'switch.title')}</h2>
-  <p>{t(lang, 'switch.body.1')}</p>
-  <p>{t(lang, 'switch.body.2')}</p>
+  <a class="choice choice--minor" href={getRelativeLocaleUrl(lang, 'terms/')}>
+    <span class="choice__text">
+      <span class="choice__title">{t(lang, 'terms.title')}</span>
+      <span class="choice__body">{t(lang, 'home.terms.body')}</span>
+    </span>
+  </a>
 </Base>

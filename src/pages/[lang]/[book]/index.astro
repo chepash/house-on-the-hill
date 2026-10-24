@@ -1,0 +1,60 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import HauntJump from '../../../components/HauntJump';
+import Base from '../../../layouts/Base.astro';
+import { langs, t, type Lang } from '../../../i18n/ui';
+import { books, getHaunts, hauntLabel, hauntSlug, type Book } from '../../../lib/haunts';
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) => books.map((book) => ({ params: { lang, book } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const book = Astro.params.book as Book;
+const haunts = await getHaunts(book, lang);
+const url = (slug: string) => getRelativeLocaleUrl(lang, `${book}/${slug}/`);
+
+// Every number a player may type, including each number of a range note.
+const jumpTargets: Record<number, string> = {};
+for (const haunt of haunts) {
+  for (let n = haunt.data.number; n <= (haunt.data.lastNumber ?? haunt.data.number); n++) {
+    jumpTargets[n] = url(hauntSlug(haunt));
+  }
+}
+---
+
+<Base lang={lang} book={book} title={t(lang, `book.${book}.title`)}>
+  <p class="eyebrow">{t(lang, `book.${book}.side`)}</p>
+  <h1>{t(lang, `book.${book}.title`)}</h1>
+  <p class="warning">{t(lang, `book.${book}.warning`)}</p>
+
+  <HauntJump
+    client:load
+    targets={jumpTargets}
+    labels={{
+      label: t(lang, 'list.jump.label'),
+      submit: t(lang, 'list.jump.submit'),
+      notFound: t(lang, 'list.jump.notFound'),
+    }}
+  />
+
+  <ol class="haunt-list">
+    {
+      haunts.map((haunt) => (
+        <li>
+          <a class:list={['haunt-row', { 'haunt-row--stub': haunt.data.stub }]} href={url(hauntSlug(haunt))}>
+            <span class="haunt-row__number">{hauntLabel(haunt)}</span>
+            <span class="haunt-row__text">
+              <span class="haunt-row__title">{haunt.data.title}</span>
+              {haunt.data.trigger && (
+                <span class="haunt-row__meta">
+                  {haunt.data.trigger} · {haunt.data.traitor}
+                </span>
+              )}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</Base>
