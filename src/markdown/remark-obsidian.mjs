@@ -1,5 +1,5 @@
 // Renders the Obsidian syntax used in the vault notes:
-// - `![[name.png|18]]` icon embeds -> <img>
+// - `![[name.png|18]]` icon embeds -> <img>; `portrait-*` files get the portrait class
 // - `> [!type] Title` callouts (nested too) -> <aside class="callout">
 // - every heading and callout gets a positional id (`b1`, `b2`, ...) and
 //   `data-anchor`. Both languages of a note have the same structure (checked by
@@ -37,7 +37,8 @@ export default function remarkObsidian({ base }) {
       let last = 0;
       for (const match of node.value.matchAll(EMBED)) {
         if (match.index > last) parts.push({ type: 'text', value: node.value.slice(last, match.index) });
-        parts.push({ type: 'html', value: img(`icons/${match[1].trim()}`, 'icon', match[2]) });
+        const name = match[1].trim();
+        parts.push({ type: 'html', value: img(`icons/${name}`, name.startsWith('portrait-') ? 'portrait' : 'icon', match[2]) });
         last = match.index + match[0].length;
       }
       if (last < node.value.length) parts.push({ type: 'text', value: node.value.slice(last) });

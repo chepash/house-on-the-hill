@@ -496,6 +496,48 @@ a {
   vertical-align: -0.3em;
 }
 
+/* Character portraits (rulebook ch. 5): ![[portrait-….png|120]] floats beside the details. */
+.prose img.portrait {
+  float: right;
+  height: auto;
+  margin: 0 0 0.75rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.25);
+}
+
+.prose p:has(> img.portrait) {
+  margin: 0;
+}
+
+/* The character's details beside the portrait: a compact card, not a bulleted list. */
+.prose p:has(> img.portrait) + ul {
+  list-style: none;
+  padding-left: 0;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+/* The description starts below the portrait instead of wrapping around it. */
+.prose p:has(> img.portrait) + ul + * {
+  clear: both;
+}
+
+.prose p:has(> img.portrait) + ul li {
+  margin: 0 0 0.3rem;
+}
+
+@media (max-width: 480px) {
+  .prose img.portrait {
+    width: 96px;
+  }
+}
+
+.prose h2 {
+  clear: both;
+}
+
 /* Original English term after the first mention of a game term (Russian notes). */
 .term-en {
   color: var(--muted);

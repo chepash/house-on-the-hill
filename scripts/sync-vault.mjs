@@ -44,7 +44,7 @@ const PAGES = [
   { id: 'rules-index', from: 'rules/', files: { en: `${RULEBOOK_DIRS.en}/Index.md`, ru: `${RULEBOOK_DIRS.ru}/Указатель.md` } },
 ];
 
-const ICON_DIRS = ['_Справочник/иконки', '_Справочник/жетоны'];
+const ICON_DIRS = ['_Справочник/иконки', '_Справочник/жетоны', '_Справочник/портреты'];
 
 // Frontmatter keys of the Russian notes, mapped to the English ones.
 const RU_KEYS = {

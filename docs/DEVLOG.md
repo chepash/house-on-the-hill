@@ -2,6 +2,24 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-25: Character portraits
+
+### Done
+
+- The 12 character portraits from the rulebook (pp. 20–21) were extracted from the PDF into
+  the vault (`_Справочник/портреты/portrait-*.png`) and placed under each character heading
+  of chapter 5 in both languages.
+- `sync-vault.mjs` copies the portrait folder with the icons; `remark-obsidian.mjs` gives
+  `portrait-*` embeds the `portrait` class, which floats right of the character's details.
+- The details beside the portrait are a compact card (no bullets, UI font); the description
+  starts below the portrait; the portrait is 96 px on narrow screens. Birthdays use a
+  non-breaking space so the day and month stay on one line.
+
+### Decisions
+
+- The rulebook has square portraits only; the pentagonal ones are printed on the character
+  boards, which are not in the PDFs.
+
 ## 2026-10-25: Russian term for haunt: «наваждение»
 
 ### Done
