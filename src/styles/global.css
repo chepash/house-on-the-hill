@@ -485,15 +485,14 @@ a {
 }
 
 /* Inline icons: ![[omen.svg|18]] */
+/* Centered on the capital letters whatever the icon's shape: `middle` centers on the
+   lowercase letters, `top` lifts that to the caps without changing the line height. */
 .prose img.icon {
+  position: relative;
+  top: -0.1em;
   height: auto;
-  vertical-align: -0.2em;
+  vertical-align: middle;
   margin: 0 0.1em;
-}
-
-.prose h2 img.icon,
-.prose h3 img.icon {
-  vertical-align: -0.3em;
 }
 
 /* Character portraits (rulebook ch. 5): ![[portrait-….png|120]] floats beside the details. */

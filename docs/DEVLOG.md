@@ -2,6 +2,15 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-25: Inline icon alignment
+
+### Done
+
+- Inline icons are centered on the capital letters instead of using a fixed `-0.2em` offset.
+  The event, item and omen icons are wide and short, so at 18 px width the fixed offset
+  dropped them to the baseline. `vertical-align: middle` alone centers on the lowercase
+  letters and lets the tall icons hang low, so a `top: -0.1em` lift is added.
+
 ## 2026-10-25: Character portraits
 
 ### Done
