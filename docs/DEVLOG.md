@@ -62,6 +62,9 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
   the narrowest phone the site supports.
 - Haunt lists: the number column is 1.5rem (two digits) instead of 3.25rem, which left a
   wide empty gap before the numbers on phones.
+- Pasha's notes reviewed with the user: 6 removed per language (English-only naming quirks
+  in haunts 25, 30, 42 ×2; haunt 50's "(3/4/4/5)" is now written as {3/4/4/5}; haunt 47's
+  "Trapped token" is now «жетон с её портретом» in the Russian text). 16 remain.
 - The "Read First!" banner is red in both books, as printed, instead of the book color:
   players compare the site with the physical book.
 
