@@ -788,6 +788,32 @@ a {
   font-weight: 700;
 }
 
+/* Foldable callouts (Pasha's notes start folded): the title row is the toggle. */
+summary.callout__title {
+  cursor: pointer;
+  list-style: none;
+}
+
+summary.callout__title::-webkit-details-marker {
+  display: none;
+}
+
+summary.callout__title::after {
+  /* A full-size triangle; U+FE0E keeps iOS from drawing it as an emoji. */
+  content: '\25B6\FE0E';
+  align-self: center;
+  margin-left: auto;
+  color: rgb(var(--callout-color));
+  font-size: 1em;
+  font-style: normal;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+
+details[open] > summary.callout__title::after {
+  transform: rotate(90deg);
+}
+
 .callout__icon {
   flex: 0 0 1.3em;
   width: 1.3em;

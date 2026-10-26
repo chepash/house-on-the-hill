@@ -65,6 +65,14 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
 - Pasha's notes reviewed with the user: 6 removed per language (English-only naming quirks
   in haunts 25, 30, 42 ×2; haunt 50's "(3/4/4/5)" is now written as {3/4/4/5}; haunt 47's
   "Trapped token" is now «жетон с её портретом» in the Russian text). 16 remain.
+- Pasha's notes start folded: the notes use Obsidian's foldable callout marker
+  (`> [!clarify]- Pasha's note`), and `remark-obsidian.mjs` renders foldable callouts as
+  `<details>` with the title as `<summary>` (`[!type]+` starts open). Optional reading,
+  so they don't distract at the table.
+- Pasha's notes rewritten with the user: haunt 39 (why the Number Track isn't in the
+  traitor's setup and what it counts), haunt 42 ×2 (Larder in the Basement, no reference
+  to haunt 35), haunt 11 (the Monster Card is a reference card; here it marks who the
+  haunt revealer is). The fold toggle is a full-size triangle that rotates when open.
 - The "Read First!" banner is red in both books, as printed, instead of the book color:
   players compare the site with the physical book.
 

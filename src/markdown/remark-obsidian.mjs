@@ -1,6 +1,7 @@
 // Renders the Obsidian syntax used in the vault notes:
 // - `![[name.png|18]]` icon embeds -> <img>; `portrait-*` files get the portrait class
-// - `> [!type] Title` callouts (nested too) -> <aside class="callout">
+// - `> [!type] Title` callouts (nested too) -> <aside class="callout">; foldable ones
+//   (`[!type]-` / `[!type]+`) -> <details> with the title as <summary>
 // - every heading and callout gets a positional id (`b1`, `b2`, ...) and
 //   `data-anchor`. Both languages of a note have the same structure (checked by
 //   scripts/sync-vault.mjs), so the same id points to the same block, which is
@@ -16,7 +17,7 @@ import { visit } from 'unist-util-visit';
 const EMBED = /!\[\[([^\]|\\]+)(?:\\?\|(\d+))?\]\]/g;
 const GLUED_WORD = /([^\s ]+) $/;
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const CALLOUT_MARKER = /^\[!([a-z-]+)\][+-]?[ \t]*/;
+const CALLOUT_MARKER = /^\[!([a-z-]+)\]([+-]?)[ \t]*/;
 
 const CALLOUT_ICONS = {
   action: 'icons/special-action.svg',
@@ -194,6 +195,8 @@ function transformCallout(node, iconHtml) {
   if (!marker) return;
 
   const type = marker[1];
+  // Obsidian's foldable callouts: `[!type]-` starts folded, `[!type]+` starts open.
+  const fold = marker[2];
   head.value = head.value.slice(marker[0].length);
 
   // The title is everything on the marker line; the rest of the paragraph is content.
@@ -229,8 +232,8 @@ function transformCallout(node, iconHtml) {
 
   node.data = {
     callout: true,
-    hName: 'aside',
-    hProperties: { className: ['callout'], dataCallout: type },
+    hName: fold ? 'details' : 'aside',
+    hProperties: { className: ['callout'], dataCallout: type, ...(fold === '+' ? { open: true } : {}) },
   };
   node.children = [
     ...(kicker
@@ -238,7 +241,10 @@ function transformCallout(node, iconHtml) {
       : []),
     {
       type: 'paragraph',
-      data: { hName: 'div', hProperties: { className: kicker ? ['callout__title', 'callout__title--named'] : ['callout__title'] } },
+      data: {
+        hName: fold ? 'summary' : 'div',
+        hProperties: { className: kicker ? ['callout__title', 'callout__title--named'] : ['callout__title'] },
+      },
       // Title text in one span: the title row is a flex container, and loose
       // text/strong nodes would otherwise become separate flex columns.
       children: [
