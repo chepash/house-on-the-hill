@@ -414,8 +414,9 @@ a {
   background: var(--accent-soft);
 }
 
+/* Two digits at most: the column is just wide enough to right-align them. */
 .haunt-row__number {
-  flex: 0 0 3.25rem;
+  flex: 0 0 1.5rem;
   color: var(--accent);
   font-family: var(--font-ui);
   font-weight: 700;

@@ -60,6 +60,8 @@ Newest entries first. Each entry: what was done, decisions made, what is next.
 - Character tables are compact on phones (no wrap under the portrait, narrow centered
   trait columns, 22 px portraits) and fit from 360 px wide,
   the narrowest phone the site supports.
+- Haunt lists: the number column is 1.5rem (two digits) instead of 3.25rem, which left a
+  wide empty gap before the numbers on phones.
 - The "Read First!" banner is red in both books, as printed, instead of the book color:
   players compare the site with the physical book.
 
