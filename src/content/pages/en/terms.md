@@ -10,7 +10,7 @@ Full rulebook: [Rulebook](../rules/1/)
 ## Reading the haunt notes
 
 - **{3/4/5/6}**: the value depends on the player count, in the order 3, 4, 5, 6 players. "Heal {1/1/2/3} Sanity" means 1 with 3 or 4 players, 2 with 5 and 3 with 6. A few times the book prints the same thing in round brackets: (3/4/4/5).
-- **Clarification (not from the book)**: our own note where the printed text raises questions. It is a hint, not a rule from the box. The table decides anything disputed.
+- **Pasha's note**: my comment where the printed text seemed disputable or confusing to us. It is not an official rule or a publisher's ruling, just a hint at how we read it; no need to study it like law. The table decides anything disputed.
 - **Icons** come from the books themselves:
   - ![[special-action.svg|18]] special action
   - ![[monster.svg|18]] monster

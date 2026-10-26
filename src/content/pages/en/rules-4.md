@@ -84,7 +84,7 @@ This is where any additional setup steps will be listed. Both sides will have di
 Each haunt has some rules that are unique to that haunt. These are called **special rules**. They may be in effect for the entire haunt, for example, changes to how tile discovery works during that haunt. Or, they may trigger when specific events occur, such as the end of your turn or the death of a character.
 
 #### B. Special Actions
-![[special-action.svg|18]] Most haunts provide rules for special actions you may take on your turn. These actions are indicated by the symbol ![[special-action.svg|18]], and they are always optional. You may perform any number of special actions on your turn, but you may only perform each special action once per turn. Any special rules associated with those actions will be listed here.
+![[special-action.svg|18]] Most haunts provide rules for special actions you may take on your turn. These actions are indicated by the symbol ![[special-action.svg|18]], and they are always optional. You may perform any number of special actions on your turn, but you may only perform each special action once per turn. Any special rules associated with those actions will be listed here.
 
 ### 4 Other Information
 This section provides additional information regarding the haunt.
@@ -165,7 +165,7 @@ Some haunts allow the traitor to control monsters. These haunts will instruct yo
 
 ## Dying
 
-Once the haunt has started, it becomes possible for explorers to die. If any of an explorer's four traits are at or below the ![[death.svg|18]], that explorer has died (unless the haunt specifies otherwise).
+Once the haunt has started, it becomes possible for explorers to die. If any of an explorer's four traits are at or below the ![[death.svg|18]], that explorer has died (unless the haunt specifies otherwise).
 
 ![[important.svg|18]] When an explorer dies, tip their figure over and leave it on the tile where they died. It is now a corpse. Keep any Items and Omens they were carrying near their character board. Other explorers may loot that corpse on future turns.
 

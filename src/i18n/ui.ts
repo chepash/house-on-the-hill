@@ -76,7 +76,7 @@ const ru: Record<UiKey, string> = {
   'list.jump.submit': 'Открыть',
   'list.jump.notFound': 'В этой книге нет наваждения с таким номером.',
 
-  'haunt.back': 'Все наваждения',
+  'haunt.back': 'Все сценарии',
   'haunt.elsewhere': 'Это наваждение напечатано в другой книге. Все читают его там.',
 };
 

@@ -495,6 +495,93 @@ a {
   margin: 0 0.1em;
 }
 
+/* Small portraits in tables (haunt 40) sit inline before the name, at any screen width
+   (the 96 px phone rule for chapter 5 must not apply here). */
+.prose td img.portrait {
+  width: 22px;
+  float: none;
+  margin: 0 0.15rem 0 0;
+  vertical-align: middle;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+/* Character tables are compact so they fit a phone: the name never wraps under its
+   portrait, the trait columns are narrow and centered. */
+.prose table:has(img.portrait) {
+  width: 100%;
+  font-size: 0.88rem;
+}
+
+.prose table:has(img.portrait) :is(th, td) {
+  padding: 0.3rem 0.15rem;
+  text-align: center;
+}
+
+.prose table:has(img.portrait) :is(th, td):first-child {
+  padding-left: 0.25rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.prose table:has(img.portrait) th {
+  font-size: 0.65rem;
+}
+
+/* Rows of a character table tinted with the color of the character's board, as in the
+   books: the two characters on one double-sided board share a color. */
+.prose tr:has(img[src*='portrait-josef-hooper'], img[src*='portrait-oliver-swift']) {
+  background: #f3dad6;
+}
+
+.prose tr:has(img[src*='portrait-jaden-jones'], img[src*='portrait-sammy-angler']) {
+  background: #d9ecdc;
+}
+
+.prose tr:has(img[src*='portrait-dan-nguyen'], img[src*='portrait-father-warren-leung']) {
+  background: #eceae6;
+}
+
+.prose tr:has(img[src*='portrait-michelle-monroe'], img[src*='portrait-brittani-bowen']) {
+  background: #e5dcef;
+}
+
+.prose tr:has(img[src*='portrait-persephone-puleri'], img[src*='portrait-stephanie-richter']) {
+  background: #d9e4f1;
+}
+
+.prose tr:has(img[src*='portrait-anita-hernandez'], img[src*='portrait-isa-valencia']) {
+  background: #f5eac3;
+}
+
+/* "In play" checkboxes (scripts/characters-in-play.ts). */
+.prose tr.character-row {
+  cursor: pointer;
+}
+
+.prose .character-toggle {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0 0.25rem 0 0;
+  vertical-align: middle;
+  accent-color: var(--accent);
+}
+
+/* A character not in the game: the numbers disappear, the name stays (faded) to undo.
+   Transparent text, not `visibility: hidden`: hidden cells don't paint the row's tint. */
+.prose tr.character-out > :not(:first-child) {
+  color: transparent;
+}
+
+.prose tr.character-out > :first-child > :not(.character-toggle) {
+  opacity: 0.35;
+}
+
+/* A word and the icon after it ("Items ![[item.svg]]") stay on one line. */
+.prose .nowrap {
+  white-space: nowrap;
+}
+
 /* Character portraits (rulebook ch. 5): ![[portrait-….png|120]] floats beside the details. */
 .prose img.portrait {
   float: right;
@@ -546,6 +633,70 @@ a {
   font-style: normal;
 }
 
+/* Haunts: the "Read First!" section, boxed under a banner as in the haunt books (red in
+   both books, as printed, so the site matches the book on the table). */
+.read-first {
+  --read-first: #8b2a2a;
+  margin: 1.5rem 0 2rem;
+  border: 2px solid var(--read-first);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.prose .read-first h2.read-first__banner {
+  margin: 0;
+  padding: 0.35rem 1rem;
+  background: var(--read-first);
+  color: #fff;
+  font-size: 1.05rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.read-first > :not(h2) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.read-first > :last-child {
+  margin-bottom: 1rem;
+}
+
+.prose .read-first__hint {
+  margin-top: 0.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Haunts: objective + tokens, the endings and lists of tiles on tinted panels, as in the
+   haunt books (the same colors in both books). */
+.panel {
+  margin: 1.5rem 0;
+  padding: 0.25rem 1rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.panel--objective {
+  background: #f0dcd6;
+}
+
+.panel--win {
+  background: #f3e6c2;
+}
+
+.panel--tiles {
+  background: #e6e3df;
+}
+
+.prose .panel > h2 {
+  margin-top: 0.75rem;
+}
+
+.panel > :last-child {
+  margin-bottom: 0;
+}
+
 /* Callouts: > [!type] Title. Colors follow the vault's betrayal.css snippet. */
 .callout {
   --callout-color: 110, 110, 110;
@@ -564,8 +715,38 @@ a {
   --callout-color: 139, 58, 58;
 }
 
+/* Monster boxes: yellow tickets with concave corners, as in the haunt books. The corners
+   come from a 9-slice border image, so they keep their shape at any box size. */
 .callout[data-callout='monster'] {
-  --callout-color: 110, 110, 110;
+  --callout-color: 176, 138, 40;
+  background: none;
+  /* Thin edges, no side padding: more room for text and wide tables (haunt 40). */
+  border: 12px solid transparent;
+  border-radius: 0;
+  border-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><path d='M10 1H38A9 9 0 0 0 47 10V38A9 9 0 0 0 38 47H10A9 9 0 0 0 1 38V10A9 9 0 0 0 10 1Z' fill='%23f6e7bd' stroke='%23b08a28' stroke-width='1.5'/></svg>") 16 fill / 12px stretch;
+  padding: 0.25rem 0 0;
+}
+
+/* Merged monster boxes: the monster icon centered on the top edge, as in the books. */
+.callout[data-callout='monster']:has(> .callout__badge) {
+  position: relative;
+  margin-top: 2rem;
+  padding-top: 0.6rem;
+}
+
+.prose .callout__badge {
+  position: absolute;
+  top: calc(-1rem - 12px);
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  transform: translateX(-50%);
+}
+
+/* The `## Monster: …` heading, moved into its box, is the box's title. */
+.prose .callout[data-callout='monster'] > h2 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.25rem;
 }
 
 .callout[data-callout='death'] {
@@ -590,6 +771,20 @@ a {
 .callout[data-callout='clarify'] > .callout__title {
   font-style: italic;
   font-weight: 400;
+}
+
+/* Special actions, as printed: a small lead-in ("Once during your turn, you may") above
+   the action's name in the action color. */
+.callout__kicker {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.callout__title--named {
+  color: rgb(var(--callout-color));
+  font-size: 1.1em;
+  font-weight: 700;
 }
 
 .callout__icon {

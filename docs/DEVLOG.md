@@ -2,6 +2,78 @@
 
 Newest entries first. Each entry: what was done, decisions made, what is next.
 
+## 2026-10-26: Special actions styled as printed; "take your turn" wording
+
+### Done
+
+- Special action callouts (`Once during your turn, you may: **Name**`) are split by
+  `remark-obsidian.mjs`: the lead-in becomes a small `callout__kicker` line, the action's
+  name is the title, in the action color, next to the icon, as in the haunt books. The vault
+  notes are unchanged.
+- Russian notes: "take your turn as …" is now «делайте ход …» instead of «ходите как …»,
+  which also reads as "you walk like …" or "act like …" (haunts 3, 18, 25, 34).
+- Clarification callouts are titled "Pasha's note" / «Заметка Паши»,
+  so players don't take them for official rulings; the terms page says so too.
+  Haunt 34's traitor note was removed: the action's own text already says how many
+  times it can be taken.
+- Haunts: the "Read First!" section (introduction and setup, up to the `---`) is a box
+  under a banner in the book's color, as in the haunt books, with a one-line hint from the
+  rulebook: read the introduction aloud to everyone, do the setup, the rest is for your
+  side only. The `---` that closed the section is dropped.
+- Haunts: "Objective" + "Tokens Needed" sit on a reddish panel and "If You Win" on a
+  yellowish one, as in both haunt books. Only notes with a "Read First!" section get
+  them, so rulebook and terms pages are untouched. The endings of hidden traitor haunts
+  ("If the Heroes Win" / "If the Traitor Wins") share one yellow panel.
+- Panels end at the first special action or monster box: those are printed outside the
+  panels even without a heading of their own (haunt 23 put its actions right after the
+  tokens). Pasha's notes stay inside the section they explain. Any h2 ends a panel, also
+  one that starts with a token image (`## ![[fire.png|30]] Seelie Flame`, haunt 24).
+- Haunts: lists of tiles ("Tiles Where You Can Research", "Bedroom Tiles", "Warding
+  Tiles", …) sit on a grey panel; lists in a row share one panel. The set was taken from
+  the grey fills in the PDFs (25 sections).
+- Haunts: a `## Monster: …` heading followed by its `[!monster]` box is merged into one
+  box with the heading as its title (the box's own title repeated the name). Monster
+  boxes are yellow tickets with concave corners and the monster icon centered on the top
+  edge, as printed. The ticket outline is a 9-slice SVG `border-image`, so the corners keep
+  their shape at any box size. The ticket edge is 12 px with no side padding, leaving
+  room for text and wide tables. All 48
+  monster boxes per language follow this pattern.
+- Monster stat lines lost their trait icons (the names already say it) and use no-break
+  spaces, so a trait name never wraps away from its value ("Might 3").
+- A word and the icon after it ("Items ![[item.svg]]", 594 places) are joined by a no-break
+  space in the notes; the site also puts each pair in a `nowrap` span, since browsers still
+  break next to an image despite the no-break space.
+- Haunt notes: 21 headings got the token printed beside them in the books (`## ![[trap.png|30]]
+  Explosives`, haunts 24, 28 and others), found by scanning the PDFs for token images next
+  to headings.
+- Token images (vault `_Справочник/жетоны`) were cropped to their visible pixels and
+  centered on square canvases with a 1 px margin: the PDF extraction had left uneven
+  transparent edges, so tokens like the rune sat off-center next to the text.
+- Haunt 40 (traitor): the character table shows a small portrait before each name, and the
+  rows are tinted with the color of the character's board, as in the book, so the two
+  characters of one double-sided board are easy to spot. Table portraits don't float.
+- Character tables get an "In play" checkbox per row (`scripts/characters-in-play.ts`):
+  tapping a row hides the numbers of a character who is not in the game (the faded name
+  stays, to undo), so the traitor reads the right
+  Evil Twin. The choice is kept per device in `localStorage`, by character, for every table
+  with portraits.
+- Character tables are compact on phones (no wrap under the portrait, narrow centered
+  trait columns, 22 px portraits) and fit from 360 px wide,
+  the narrowest phone the site supports.
+- The "Read First!" banner is red in both books, as printed, instead of the book color:
+  players compare the site with the physical book.
+
+- Favicon: the book's death skull on a white rounded square with a thin accent border
+  (`favicon.svg`, plus a 16/32/48 px `favicon.ico` rendered from it), readable on light
+  and dark browser tabs.
+
+### Decisions
+
+- Astro caches rendered Markdown in `.astro/`, `node_modules/.astro` and
+  `node_modules/.vite`. After changing a remark plugin without changing the notes, delete
+  all three before a local build; deleting only `data-store.json` is not enough. CI always
+  builds clean.
+
 ## 2026-10-25: Inline icon alignment
 
 ### Done

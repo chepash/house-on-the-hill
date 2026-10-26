@@ -43,7 +43,7 @@ title: Game Components and Setup
 5. Sort the **Event**, **Item**, and **Omen** cards by type. Shuffle each into a face-down deck, placed within easy reach of all players.
 6. Place the **Monster reference card** and **Traitor reference card** face-up on the table, within sight of all players.
 7. Give each player a **Player reference card**.
-8. Begin to build the house, using the three **starting tiles**. Each of these is marked with an ![[starting-tile.svg|18]] symbol. Place these tiles in the center of the table, about 8–10 inches apart.
+8. Begin to build the house, using the three **starting tiles**. Each of these is marked with an ![[starting-tile.svg|18]] symbol. Place these tiles in the center of the table, about 8–10 inches apart.
 9. Shuffle the remaining **room tiles** together and put them on the table in a face-down stack.
 10. Place each explorer on the **Entrance Hall** space of the large starting tile.
 11. ![[important.svg|18]] As a group, the players should review the five **Scenario cards** and choose one. The scenario described on the chosen card will become the characters' motivation for entering the house. This card will also determine which haunt they will face during the game. Return the remaining Scenario cards to the game box.
@@ -84,7 +84,7 @@ Player reference cards provide useful reminders of the actions you can take on y
 These cards provide step-by-step reminders of what the traitor and monsters are able to do on their turns.
 
 ### Room Tiles
-As you play, you will construct the house using room tiles. When you explore, you will place a new room tile in your region (Basement, Ground Floor, or Upper Floor, shown on the card back), and then draw an Event ![[event.svg|18]], Item ![[item.svg|18]], or Omen ![[omen.svg|18]] card, according to the symbol shown on the front of the tile.
+As you play, you will construct the house using room tiles. When you explore, you will place a new room tile in your region (Basement, Ground Floor, or Upper Floor, shown on the card back), and then draw an Event ![[event.svg|18]], Item ![[item.svg|18]], or Omen ![[omen.svg|18]] card, according to the symbol shown on the front of the tile.
 
 ### Tokens
 *Betrayal* comes with a lot of tokens. Most of them are used in haunts, where they will have rules attached to them. The haunt will tell you where to place them, how to use them, and what they represent. Sometimes they are used to denote steps in a ritual, or the amount of blood that you have collected. Look at the **Tokens Needed** section at the beginning of each haunt to see what tokens are used, and what they represent.

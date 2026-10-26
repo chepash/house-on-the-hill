@@ -52,6 +52,7 @@ const urls = localizedUrls(Astro.url.pathname);
 </html>
 
 <script>
+  import { initCharacterRows } from '../scripts/characters-in-play';
   import { applyLock } from '../scripts/lock';
   import { rememberLang, restoreReadingAnchor } from '../scripts/reading-position';
 
@@ -62,6 +63,7 @@ const urls = localizedUrls(Astro.url.pathname);
   document.addEventListener('astro:after-swap', applyLock);
   document.addEventListener('astro:page-load', () => {
     applyLock();
+    initCharacterRows();
     rememberLang(document.documentElement.lang);
   });
 </script>

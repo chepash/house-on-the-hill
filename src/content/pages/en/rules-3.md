@@ -34,7 +34,7 @@ During your movement, if you are on a tile with an unexplored doorway, you may m
     - If the top tile of the tile stack does not match your explorer's region, **bury** that tile (put it on the bottom of the stack). Repeat this process until you reveal a tile that can be placed in your explorer's region; place this tile using the rule above.
 3. Place your explorer's figure on the new tile.
 4. Resolve any text on the tile that says "when you discover this tile…," or "when you enter this tile…."
-5. If the tile has a ![[event.svg|18]], ![[item.svg|18]], or ![[omen.svg|18]] symbol, draw a card from the matching deck. Read the card's text out loud and resolve any effects as instructed. (See "Playing Event, Item, and Omen Cards," on this page.)
+5. If the tile has a ![[event.svg|18]], ![[item.svg|18]], or ![[omen.svg|18]] symbol, draw a card from the matching deck. Read the card's text out loud and resolve any effects as instructed. (See "Playing Event, Item, and Omen Cards," on this page.)
 6. ![[important.svg|18]] End your turn.
 
 *Illegal tile placement. Note that the doors do not connect.*
@@ -42,7 +42,7 @@ During your movement, if you are on a tile with an unexplored doorway, you may m
 *Legal tile placement. Note the doors connect.*
 
 ### Playing Event, Item, and Omen Cards
-Most tiles show an Event ![[event.svg|18]], Item ![[item.svg|18]], or Omen ![[omen.svg|18]] symbol. When you place one of these tiles, draw the top card of the matching deck.
+Most tiles show an Event ![[event.svg|18]], Item ![[item.svg|18]], or Omen ![[omen.svg|18]] symbol. When you place one of these tiles, draw the top card of the matching deck.
 
 #### Events
 ![[event.svg|18]] When you draw an Event card, read its italicized text aloud and follow the instructions. Then, **bury** the card by placing it on the bottom of its deck.
@@ -88,7 +88,7 @@ In addition to moving, there are some other things you may do on your turn. Reme
 > It's Samantha's turn. She moves Father Warren to the Ballroom, where Marley's explorer Brittani is waiting. Samantha trades her Strange Amulet to Marley in exchange for the Mask. Earlier this turn, Samantha used her Crossbow to attack a Zombie. As a result, the Crossbow cannot be traded this turn.
 
 ### Special Actions
-![[important.svg|18]] Many Items and Omens are marked with a special action symbol ![[special-action.svg|18]]. Each special action will tell you when and how it works. Special actions are always optional.
+![[important.svg|18]] Many Items and Omens are marked with a special action symbol ![[special-action.svg|18]]. Each special action will tell you when and how it works. Special actions are always optional.
 - Unless otherwise noted, you may only perform each special action once per turn. You may perform each special action available to you but you may not repeat them on your turn.
 - *You may not take a special action with any Item or Omen you did not have at the start of your turn.*
 
